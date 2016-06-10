@@ -13,11 +13,25 @@ namespace Colander.Controllers
     public class WordsController : Controller
     {
         private WordListDBContext db = new WordListDBContext();
+        private WordService.WordService wordService = new WordService.WordService();
+        
 
         // GET: Words
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var words = db.Words.Include(w => w.WordList);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //Word word = db.Words.Find(id);
+            var words = wordService.GetForListId(id);
+            if (words == null)
+            {
+                return HttpNotFound();
+            }
+
+            //var words = db.Words.Include(w => w.WordList);
+
             return View(words.ToList());
         }
 

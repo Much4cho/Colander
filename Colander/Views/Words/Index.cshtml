@@ -11,9 +11,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.WordList.WordListID)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.WordOriginal)
         </th>
@@ -25,9 +25,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.WordList.WordListID)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.WordOriginal)
         </td>
