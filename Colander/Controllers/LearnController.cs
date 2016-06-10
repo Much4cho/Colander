@@ -12,12 +12,12 @@ namespace Colander.Controllers
     {
         private WordListDBContext db = new WordListDBContext();
         private WordService.WordService wordService = new WordService.WordService();
-
-
-
+        public string usersAnswer;
+        
         // GET: Learn
         public ActionResult Learn(int? id)
         {
+            
             if (id == null)
             {
 
@@ -34,6 +34,9 @@ namespace Colander.Controllers
                 return HttpNotFound();
             }
             return View(word);
+            
+
+            
         }
     }
 }
