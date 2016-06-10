@@ -2,12 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
+    var currentID = Model.FirstOrDefault().WordListID;
 }
+
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", currentID)
 </p>
 <table class="table">
     <tr>
@@ -36,7 +38,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.WordID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WordID }) |
+            @Html.ActionLink("Details", "Learn", new { id=item.WordID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.WordID })
         </td>
     </tr>

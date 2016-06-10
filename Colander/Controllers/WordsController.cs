@@ -22,9 +22,9 @@ namespace Colander.Controllers
             if (id == null)
             {
           
-                    id = wordService.CurrentListID;
+                    //id = wordService.CurrentListID;
           
-                   // return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
+                   return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
        
             }
             //Word word = db.Words.Find(id);
@@ -137,6 +137,27 @@ namespace Colander.Controllers
             db.Words.Remove(word);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Learn
+        public ActionResult Learn(int? id)
+        {
+            if (id == null)
+            {
+
+                //id = wordService.CurrentListID;
+
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            //Word word = db.Words.Find(id);
+            wordService.CurrentListID = (int)id;
+            var word = wordService.GetForWordId(id);
+            if (word == null)
+            {
+                return HttpNotFound();
+            }
+            return View(word);
         }
 
         protected override void Dispose(bool disposing)
