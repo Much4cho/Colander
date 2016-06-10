@@ -28,6 +28,7 @@ namespace Colander.WordService
     public class WordService
     {
         private WordListDBContext _db;
+        public int CurrentListID { get; set; }
 
         public WordService()
         {
@@ -36,7 +37,7 @@ namespace Colander.WordService
 
         public IEnumerable<Word> GetForListId(int? wordListId)
         {
-            
+
             return _db.WordLists.First(list => list.WordListID == wordListId).Words;
 
             //return _db.WordLists.Find(wordListId).Words;
