@@ -10,8 +10,7 @@
 {
     @Html.AntiForgeryToken()
     <div>
-        @Html.DisplayFor(model => model.WordOriginal)
-        <h4>"Word original"</h4>
+        <h4>@Html.DisplayFor(model => model.WordOriginal)</h4>
     </div>
     <div>
         Your answer: @Html.TextBox("usersAnswer")<br />

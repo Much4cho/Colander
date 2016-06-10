@@ -291,7 +291,6 @@
     <Content Include="Views\Words\Learn.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Learn\" />
     <Folder Include="Views\WordLearning\" />
   </ItemGroup>
   <ItemGroup>
