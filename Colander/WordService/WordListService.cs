@@ -24,4 +24,22 @@ namespace Colander.WordService
             _db.SaveChanges();
         }
     }
+
+    public class WordService
+    {
+        private WordListDBContext _db;
+
+        public WordService()
+        {
+            _db = new WordListDBContext();
+        }
+
+        public IEnumerable<Word> GetForListId(int? wordListId)
+        {
+            
+            return _db.WordLists.First(list => list.WordListID == wordListId).Words;
+
+            //return _db.WordLists.Find(wordListId).Words;
+        }
+    }
 }

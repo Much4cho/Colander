@@ -24,7 +24,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.WordListID }) |
-            @Html.ActionLink("Details", "Index", "Words") |
+            @Html.ActionLink("Details", "Index", "Words", new { id = item.WordListID }, null) |
             @Html.ActionLink("Delete", "Delete", new { id=item.WordListID })
         </td>
     </tr>
