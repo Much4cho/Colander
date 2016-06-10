@@ -30,10 +30,7 @@ namespace Colander.Controllers
             //Word word = db.Words.Find(id);
             wordService.CurrentListID = (int)id;
             var words = wordService.GetForListId(id);
-            if (words == null)
-            {
-                return HttpNotFound();
-            }
+            
 
             //var words = db.Words.Include(w => w.WordList);
 

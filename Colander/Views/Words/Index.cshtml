@@ -2,14 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
-    var currentID = Model.FirstOrDefault().WordListID;
+    //var currentID = Model.FirstOrDefault().WordListID;
 }
 
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", currentID)
+    @Html.ActionLink("Create New", "Create")    @*currentID*@ 
 </p>
 <table class="table">
     <tr>
