@@ -28,7 +28,7 @@ namespace Colander.WordService
     public class WordService
     {
         private WordListDBContext _db;
-        public int CurrentListID { get; set; }
+        public int? CurrentListID { get; set; }
 
         public WordService()
         {

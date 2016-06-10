@@ -27,7 +27,7 @@ namespace Colander.Controllers
 
             }
             //Word word = db.Words.Find(id);
-            wordService.CurrentListID = (int)id;
+            wordService.CurrentListID = id;
             var word = wordService.GetForWordId(id);
             if (word == null)
             {
