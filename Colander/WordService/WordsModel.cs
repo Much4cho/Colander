@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,8 @@ namespace Colander.WordService
     {
         private int i = 0;
         public int WordListID { get; set; }
+
+        [Display(Name = "Word List Name")]
         public string WordListName { get; set; }
 
         public virtual List<Word> Words { get; set; }
