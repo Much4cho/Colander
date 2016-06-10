@@ -10,6 +10,7 @@ namespace Colander.WordService
     {
         private int i = 0;
         public int WordListID { get; set; }
+        public string WordListName { get; set; }
 
         public virtual List<Word> Words { get; set; }
     }

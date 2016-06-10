@@ -1,5 +1,4 @@
-﻿using Colander.WordService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,110 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Colander.WordService;
 
 namespace Colander.Controllers
 {
-    public class WordListsController : Controller
+    public class WordsController : Controller
     {
         private WordListDBContext db = new WordListDBContext();
 
-        // GET: WordLists
+        // GET: Words
         public ActionResult Index()
         {
-            return View(db.WordLists.ToList());
+            var words = db.Words.Include(w => w.WordList);
+            return View(words.ToList());
         }
 
-        // GET: WordLists/Details/5
+        // GET: Words/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WordList wordList = db.WordLists.Find(id);
-            if (wordList == null)
+            Word word = db.Words.Find(id);
+            if (word == null)
             {
                 return HttpNotFound();
             }
-            return View(wordList);
+            return View(word);
         }
 
-        // GET: WordLists/Create
+        // GET: Words/Create
         public ActionResult Create()
         {
+            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID");
             return View();
         }
 
-        // POST: WordLists/Create
+        // POST: Words/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WordListID,WordListName")] WordList wordList)
+        public ActionResult Create([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID")] Word word)
         {
             if (ModelState.IsValid)
             {
-                db.WordLists.Add(wordList);
+                db.Words.Add(word);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(wordList);
+            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
+            return View(word);
         }
 
-        // GET: WordLists/Edit/5
+        // GET: Words/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WordList wordList = db.WordLists.Find(id);
-            if (wordList == null)
+            Word word = db.Words.Find(id);
+            if (word == null)
             {
                 return HttpNotFound();
             }
-            return View(wordList);
+            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
+            return View(word);
         }
 
-        // POST: WordLists/Edit/5
+        // POST: Words/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WordListID,WordListName")] WordList wordList)
+        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID")] Word word)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(wordList).State = EntityState.Modified;
+                db.Entry(word).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(wordList);
+            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
+            return View(word);
         }
 
-        // GET: WordLists/Delete/5
+        // GET: Words/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WordList wordList = db.WordLists.Find(id);
-            if (wordList == null)
+            Word word = db.Words.Find(id);
+            if (word == null)
             {
                 return HttpNotFound();
             }
-            return View(wordList);
+            return View(word);
         }
 
-        // POST: WordLists/Delete/5
+        // POST: Words/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            WordList wordList = db.WordLists.Find(id);
-            db.WordLists.Remove(wordList);
+            Word word = db.Words.Find(id);
+            db.Words.Remove(word);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
