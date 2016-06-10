@@ -42,5 +42,9 @@ namespace Colander.WordService
 
             //return _db.WordLists.Find(wordListId).Words;
         }
+        public Word GetForWordId(int? wordId)
+        {
+            return _db.Words.Find(wordId);
+        }
     }
 }

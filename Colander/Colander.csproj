@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LearnController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WordsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -287,8 +288,10 @@
     <Content Include="Views\Words\Details.cshtml" />
     <Content Include="Views\Words\Edit.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
+    <Content Include="Views\Words\Learn.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Learn\" />
     <Folder Include="Views\WordLearning\" />
   </ItemGroup>
   <ItemGroup>
