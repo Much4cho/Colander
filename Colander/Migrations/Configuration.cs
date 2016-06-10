@@ -27,6 +27,19 @@ namespace Colander.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            //context.WordLists.AddOrUpdate(w => w.WordListName,
+            //    new WordService.WordList
+            //    {
+            //        WordListName = "EN Sports",
+            //        Words 
+            //    },
+            //    new WordService.WordList
+            //    {
+            //        WordListName = ""
+            //    }
+            
+            //);
         }
     }
 }
