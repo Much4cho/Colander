@@ -16,19 +16,19 @@
         Your answer: @Html.TextBox("usersAnswer")<br />
         <input type="button" value="Check" onclick="showhide()" class="btn btn-default" /><br />
     </div>
-    <div id="checking" style="display:none"/>
+    <div id="checking" style="display:none" />
     <script type="text/javascript">
     function showhide() {
         var div = document.getElementById("checking");
-            div.style.display = "block";      
+            div.style.display = "block";
     }
     </script>
     //if (usersAnswer=wordTranslation) then <h3 color=green> Correct! </h3>
     // else <h3 color=red> Incorrect! </h3>
     /// wybacz pseudokod
 
-    <div id="checking"> Correct answer: <p style="color:green"> wow @Html.DisplayFor(model => model.WordOriginal)</p> </div>
+    <div id="checking"> Correct answer: <p style="color:green">@Html.DisplayFor(model => model.WordTranslation)</p> </div>
     <div id="checking"> Your answer: <p style="color:red"> hihi  </p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
-    <input  id="checking" type="button" value="Next" class="btn btn-default" />
+                                                                                <input id="checking" type="button" value="Next" class="btn btn-default" />
 
 }
