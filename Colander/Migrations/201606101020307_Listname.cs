@@ -3,7 +3,7 @@ namespace Colander.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Listname : DbMigration
     {
         public override void Up()
         {
@@ -12,6 +12,7 @@ namespace Colander.Migrations
                 c => new
                     {
                         WordListID = c.Int(nullable: false, identity: true),
+                        WordListName = c.String(),
                     })
                 .PrimaryKey(t => t.WordListID);
             

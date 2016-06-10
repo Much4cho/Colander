@@ -202,9 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606100801049_InitialCreate.cs" />
-    <Compile Include="Migrations\201606100801049_InitialCreate.Designer.cs">
-      <DependentUpon>201606100801049_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201606101020307_Listname.cs" />
+    <Compile Include="Migrations\201606101020307_Listname.Designer.cs">
+      <DependentUpon>201606101020307_Listname.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -217,6 +217,7 @@
     <Compile Include="WordService\WordsModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Colander.WordService.WordListDBContext.mdf" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -287,9 +288,7 @@
     <Content Include="Views\Words\Edit.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -299,8 +298,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606100801049_InitialCreate.resx">
-      <DependentUpon>201606100801049_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606101020307_Listname.resx">
+      <DependentUpon>201606101020307_Listname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
