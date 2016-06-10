@@ -21,9 +21,14 @@ namespace Colander.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+          
+                    id = wordService.CurrentListID;
+          
+                   // return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
+       
             }
             //Word word = db.Words.Find(id);
+            wordService.CurrentListID = (int)id;
             var words = wordService.GetForListId(id);
             if (words == null)
             {
