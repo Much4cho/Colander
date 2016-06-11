@@ -13,7 +13,9 @@ namespace Colander.Controllers
         private WordListDBContext db = new WordListDBContext();
         private WordService.WordService wordService = new WordService.WordService();
         public string usersAnswer;
+       
         
+        //Random words 
         // GET: Learn
         public ActionResult Learn(int? id)
         {
@@ -29,8 +31,9 @@ namespace Colander.Controllers
             //Word word = db.Words.Find(id);
             //wordService.CurrentListID = id;
             //var word = wordService.GetForWordId(id);
+            Random random = new Random();
             var words = wordService.GetForListId(id);
-            var word = words.GetEnumerator();
+            var word = words.ElementAt(random.Next(words.LastOrDefault().WordID));
             if (word == null)
             {
                 return HttpNotFound();
@@ -40,6 +43,10 @@ namespace Colander.Controllers
             return View(word);
             
         }
+
+
+        //Specified word
+        // GET: LearnWord
 
         public ActionResult LearnWord(int? id)
         {
