@@ -39,6 +39,6 @@
                                                                                         <input id="checking" type="button" value="Next" class="btn btn-default" />
 
     <div>
-        @Html.ActionLink("Back to List", "Index", "Words", Model.WordListID, null)
+        @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID }, null)
     </div>
 } 

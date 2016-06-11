@@ -38,7 +38,7 @@
     <div id="checking"> Your answer: <p><span id='usersAnswer'></span></p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
                                                                                         <input id="checking" type="button" value="Next" class="btn btn-default" />
     <div>
-        @Html.ActionLink("Back to List", "Index", "Words", Model.WordListID, null)
+        @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID}, null)
     </div>
 
 } 
