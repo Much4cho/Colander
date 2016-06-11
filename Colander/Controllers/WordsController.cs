@@ -13,8 +13,8 @@ namespace Colander.Controllers
     public class WordsController : Controller
     {
         private WordListDBContext db = new WordListDBContext();
-        private WordService.WordService wordService = new WordService.WordService() { CurrentListID = 1 };
-
+        private WordService.WordService wordService = new WordService.WordService();
+        private static int? CurrentListID = null;
 
         // GET: Words
         public ActionResult Index(int? id)
@@ -22,17 +22,17 @@ namespace Colander.Controllers
             if (id == null)
             {
 
-                if (wordService.CurrentListID == 0)
+                if (CurrentListID == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
                 }
 
-                id = wordService.CurrentListID;
+                id =CurrentListID;
 
             }
             //Word word = db.Words.Find(id);
-            wordService.CurrentListID = id;
+            CurrentListID = id;
             var words = wordService.GetForListId(id);
 
 
@@ -74,7 +74,7 @@ namespace Colander.Controllers
             {
                 db.Words.Add(word);
                 db.SaveChanges();
-                return RedirectToAction("Index",new { id = wordService.CurrentListID} );
+                return RedirectToAction("Index",new { id = CurrentListID} );
             }
 
             ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);

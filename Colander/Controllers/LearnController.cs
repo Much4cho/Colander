@@ -27,16 +27,41 @@ namespace Colander.Controllers
 
             }
             //Word word = db.Words.Find(id);
-            wordService.CurrentListID = id;
+            //wordService.CurrentListID = id;
+            //var word = wordService.GetForWordId(id);
+            var words = wordService.GetForListId(id);
+            var word = words.GetEnumerator();
+            if (word == null)
+            {
+                return HttpNotFound();
+            }
+            
+
+            return View(word);
+            
+        }
+
+        public ActionResult LearnWord(int? id)
+        {
+
+            if (id == null)
+            {
+
+                //id = wordService.CurrentListID;
+
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            //Word word = db.Words.Find(id);
+            //wordService.CurrentListID = id;
             var word = wordService.GetForWordId(id);
             if (word == null)
             {
                 return HttpNotFound();
             }
-            return View(word);
-            
 
-            
+            return View(word);
+
         }
     }
 }
