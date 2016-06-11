@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Learn";
+    ViewBag.Title = "LearnWord";
 }
 
 <h2>Learn</h2>
@@ -21,7 +22,7 @@
         <div id="checking" style="display:none" />
         <script type="text/javascript">
             function showhide() {
-                var div = document.getElementById("checking");
+                var div = document.getElementById("checking","checking2");
                 div.style.display = "block";
             }
             function changeThis() {
@@ -36,9 +37,8 @@
 
     <div id="checking"> Correct answer: <p style="color:green">@Html.DisplayFor(model => model.WordTranslation)</p> </div>
     <div id="checking"> Your answer: <p><span id='usersAnswer'></span></p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
-                                                                                        <input id="checking" type="button" value="Next" class="btn btn-default" >
-@Re
-    </input>
+                                                                                        <input id="checking2" type="button" value="Next" class="btn btn-default" onclick="javascript:location.reload(true)" />
+
     <div>
         @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID}, null)
     </div>
