@@ -23,16 +23,16 @@
             </td>
             <td style=" width:340px;">
                 <div style="display:inline">
-                    @using (Html.BeginForm("Change name", "Edit", new { id = item.WordListID }))
-                {
+                    @using (Html.BeginForm("Edit", "WordLists", new { id = item.WordListID }))
+                    {
                         <input type="submit" value="Change name" class="btn btn-primary" style="float:left; margin-right:3px"  />
                     }
-                    @using (Html.BeginForm("Show words", "Words", new { id = item.WordListID }))
-                {
+                    @using (Html.BeginForm("Index", "Words", new { id = item.WordListID }))
+                    {
                         <input type="submit" value="Show words" class="btn btn-primary" style="float:left; margin-right:3px"/>
                     }
-                    @using (Html.BeginForm("Delete list", "Delete", new { id = item.WordListID }))
-                {
+                    @using (Html.BeginForm("Delete", "WordLists", new { id = item.WordListID }))
+                    {
                         <input type="submit" value="Delete list" class="btn btn-primary" style="float:left"/>
                     }
                 </div>
