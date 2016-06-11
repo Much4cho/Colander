@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Colander.WordService.WordList>
+@{
+    ViewBag.Title = "Lists";
+}
+
+<p>
+    @using (Html.BeginForm("Create New", "Create"))
+    {
+        <input type="submit" value="Create new list" class="btn btn-primary" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WordListName)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WordListName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.WordListID }) |
+                @Html.ActionLink("Details", "Index", "Words", new { id = item.WordListID }, null) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.WordListID })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,42 @@
+﻿@model Colander.WordService.Word
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Word</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WordList.WordListID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WordList.WordListID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WordOriginal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WordOriginal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WordTranslation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WordTranslation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WordID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
