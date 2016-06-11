@@ -290,7 +290,7 @@
     <Content Include="Views\Words\Delete.cshtml" />
     <Content Include="Views\Words\Details.cshtml" />
     <Content Include="Views\Words\Edit.cshtml" />
-    <Content Include="Views\Words\Index.cshtml" />
+    <Content Include="Views\Words\Your_words.cshtml" />
     <Content Include="Views\Learn\Learn.cshtml" />
     <Content Include="Views\Learn\LearnWord.cshtml" />
   </ItemGroup>

@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Colander.WordService.Word>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your_words";
     //var currentID = Model.FirstOrDefault().WordListID;
 }
 
 
-<h2>Index</h2>
+<h2>Words in this list:</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", new { id = Model.FirstOrDefault().WordListID }, null)    @*currentID*@ 
@@ -15,7 +15,7 @@
     @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = Model.FirstOrDefault().WordListID}, null)
 </p>
 <table class="table">
-    <tr>
+    <tr style="background-color:darkgray; color:black;">
         @*<th>
             @Html.DisplayNameFor(model => model.WordList.WordListID)
         </th>*@

@@ -17,7 +17,7 @@ namespace Colander.Controllers
         private static int? CurrentListID = null;
 
         // GET: Words
-        public ActionResult Index(int? id)
+        public ActionResult Your_words(int? id)
         {
             if (id == null)
             {
