@@ -25,6 +25,7 @@
                 <div style="display:inline">
                     @using (Html.BeginForm("Edit", "WordLists", new { id = item.WordListID }))
                     {
+                       // @Html.AntiForgeryToken() <- wysypuje, bo nie ma tego, ale gdy dodam, wywala błąd przy db.SaveChanges 
                         <input type="submit" value="Change name" class="btn btn-primary" style="float:left; margin-right:3px"  />
                     }
                     @using (Html.BeginForm("Index", "Words", new { id = item.WordListID }))
@@ -42,7 +43,7 @@
     
 </table>
 <div style="margin-left:920px; margin-top:10px">
-    @using (Html.BeginForm("Create New", "Create"))
+    @using (Html.BeginForm("Create", "WordLists"))
     {
         <input type="submit" value="Create new list" class="btn btn-primary" style="background-color:whitesmoke; border-color:dimgray" />
     }
