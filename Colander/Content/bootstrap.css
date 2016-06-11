@@ -222,6 +222,7 @@ textarea {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  border:solid;
 }
 
 @media print {
@@ -277,9 +278,11 @@ table {
   .navbar {
     display: none;
   }
-  .table td,
+  .table td {background-color: whitesmoke}
   .table th {
-    background-color: yellowgreen !important;
+    background-color: darkgray;
+    color: whitesmoke;
+    border:solid;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -1560,6 +1563,7 @@ table th[class*="col-"] {
   background-color: #ebcccc;
   border-color: #e6c1c7;
 }
+.tr{color:black; border:solid}
 
 .table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
