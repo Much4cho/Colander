@@ -36,7 +36,9 @@
 
     <div id="checking"> Correct answer: <p style="color:green">@Html.DisplayFor(model => model.WordTranslation)</p> </div>
     <div id="checking"> Your answer: <p><span id='usersAnswer'></span></p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
-                                                                                        <input id="checking" type="button" value="Next" class="btn btn-default" />
+                                                                                        <input id="checking" type="button" value="Next" class="btn btn-default" >
+@Re
+    </input>
     <div>
         @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID}, null)
     </div>
