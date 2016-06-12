@@ -25,10 +25,10 @@
                 <div style="display:inline">
                     @using (Html.BeginForm("Edit", "WordLists", new { id = item.WordListID }))
                     {
-                       // @Html.AntiForgeryToken() <- wysypuje, bo nie ma tego, ale gdy dodam, wywala błąd przy db.SaveChanges 
+                        // <- wysypuje, bo nie ma tego, ale gdy dodam, wywala błąd przy db.SaveChanges 
                         <input type="submit" value="Change name" class="btn btn-primary" style="float:left; margin-right:3px"  />
                     }
-                    @using (Html.BeginForm("Index", "Words", new { id = item.WordListID }))
+                    @using (Html.BeginForm("Your_words", "Words", new { id = item.WordListID }))
                     {
                         <input type="submit" value="Show words" class="btn btn-primary" style="float:left; margin-right:3px"/>
                     }
@@ -48,3 +48,4 @@
         <input type="submit" value="Create new list" class="btn btn-primary" style="background-color:whitesmoke; border-color:dimgray" />
     }
 </div>
+
