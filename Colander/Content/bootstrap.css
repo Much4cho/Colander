@@ -222,6 +222,7 @@ textarea {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  border:solid;
 }
 
 @media print {
@@ -277,13 +278,15 @@ table {
   .navbar {
     display: none;
   }
-  .table td,
+  .table td {background-color: whitesmoke}
   .table th {
-    background-color: #fff !important;
+    background-color: darkgray;
+    color: whitesmoke;
+    border:solid;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
-    border-top-color: #000 !important;
+    border-top-color:  !important;
   }
   .label {
     border: 1px solid #000;
@@ -314,8 +317,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+  color: darkslategrey;
+  background-color: snow;
 }
 
 input,
@@ -371,7 +374,7 @@ img {
   max-width: 100%;
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-color: orange;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -492,7 +495,7 @@ h6 small,
 .h6 small {
   font-weight: normal;
   line-height: 1;
-  color: #999999;
+  color: violet;
 }
 
 h1,
@@ -760,7 +763,7 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 0px;
 }
 
 .container:before,
@@ -1560,6 +1563,7 @@ table th[class*="col-"] {
   background-color: #ebcccc;
   border-color: #e6c1c7;
 }
+.tr{color:black; border:solid}
 
 .table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
@@ -2051,7 +2055,7 @@ fieldset[disabled] .btn {
 .btn-default {
   color: #333333;
   background-color: #ffffff;
-  border-color: #cccccc;
+  border-color: dimgray;
 }
 
 .btn-default:hover,
@@ -2090,9 +2094,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  color: black;
+  background-color: #ffd9df;
+  border-color: #ffc0cb;
 }
 
 .btn-primary:hover,

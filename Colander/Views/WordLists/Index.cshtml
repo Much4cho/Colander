@@ -1,33 +1,36 @@
 ﻿@model IEnumerable<Colander.WordService.WordList>
-
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<div style="margin-left: 255px">
+    <h4>Your lists of words:</h4>
+</div>
+<table class="table" style="width:820px;  margin-left:250px">
+    <tr style="background-color:darkgray; color:black;">
         <th>
             @Html.DisplayNameFor(model => model.WordListName)
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.WordListName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WordListID }) |
-            @Html.ActionLink("Details", "Index", "Words", new { id = item.WordListID }, null) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WordListID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="width:460px; font-size:16px; font-weight:bold; font-family:'Lucida Sans'">
+                @Html.DisplayFor(modelItem => item.WordListName)
+            </td>
+            <td style=" width:340px;">
+                @Html.ActionLink("Change name", "Edit", new { id = item.WordListID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Show words", "Index", "Words", new { id = item.WordListID }, new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("Delete list", "Delete", new { id = item.WordListID }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>
+<div style="margin-left:920px; margin-top:10px">
+    @Html.ActionLink("Create new list", "Create","", new { @class = "btn btn-default" })
+</div>
+

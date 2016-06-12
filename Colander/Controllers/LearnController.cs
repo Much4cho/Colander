@@ -50,8 +50,7 @@ namespace Colander.Controllers
             return View(word);
 
         }
-
-
+          
         //Specified word
         // GET: LearnWord
 
@@ -66,6 +65,7 @@ namespace Colander.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             }
+            
             //Word word = db.Words.Find(id);
             //wordService.CurrentListID = id;
             var word = wordService.GetForWordId(id);

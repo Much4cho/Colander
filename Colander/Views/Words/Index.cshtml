@@ -5,46 +5,48 @@
     //var currentID = Model.FirstOrDefault().WordListID;
 }
 
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create", new { id = Model.FirstOrDefault().WordListID }, null)    @*currentID*@ 
-</p>
-<p>
-    @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = Model.FirstOrDefault().WordListID}, null)
-</p>
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.WordList.WordListID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.WordOriginal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WordTranslation)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.WordList.WordListID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.WordOriginal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WordTranslation)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WordID }) |
-            @Html.ActionLink("Details", "LearnWord", "Learn", new { id=item.WordID }, null) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WordID })
-        </td>
-    </tr>
-}
-
-</table>
+<div style="margin-left:220px">
+    <h2 style="display:inline">Words in this list:</h2>
+    <p style="float:right; margin-right:3px">
+        @Html.ActionLink("Add new word", "Create", new { id = Model.FirstOrDefault().WordListID }, new { @class = "btn btn-primary" })    @*currentID*@
+    </p>
+    <p style="float:right;margin-right:3px">
+        @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = Model.FirstOrDefault().WordListID }, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table" style="width:1000px">
+        <tr style="background-color:darkgray; color:black;">
+            @*<th>
+                    @Html.DisplayNameFor(model => model.WordList.WordListID)
+                </th>*@
+            <th style="width:300px">
+                @Html.DisplayNameFor(model => model.WordOriginal)
+            </th>
+            <th style="width:300px">
+                @Html.DisplayNameFor(model => model.WordTranslation)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.WordList.WordListID)
+                    </td>*@
+                <td style="width:310px">
+                    @Html.DisplayFor(modelItem => item.WordOriginal)
+                </td>
+                <td style="width:310px">
+                    @Html.DisplayFor(modelItem => item.WordTranslation)
+                </td>
+                <td style="width:380px">
+                    @Html.ActionLink("Edit word", "Edit", new { id = item.WordID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Learn this word", "LearnWord", "Learn", new { id = item.WordID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete word", "Delete", new { id = item.WordID }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Back to Lists", "Index","WordLists")
+</div>

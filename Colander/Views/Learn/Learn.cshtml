@@ -1,46 +1,59 @@
 ﻿@model Colander.WordService.Word
-
 @{
     ViewBag.Title = "Learn";
-    ViewBag.Title = "LearnWord";
 }
-
-<h2>Learn</h2>
-
+<h2 style="font-family:'Copperplate Gothic'; margin-left:540px; margin-top:0px">learning mode</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div>
-        <h4>@Html.DisplayFor(model => model.WordOriginal)</h4>
+    <div style="margin-left:490px;">Word:</div>
+    <div style="width: 320px;
+height:140px;
+    padding: 10px;
+    border: 1px solid gray;
+    text-align:center;
+    margin-left:490px;
+    margin-bottom:5px;
+    background-color:lavenderblush;
+    ">
+        <h4 style="margin-top:40px; font-family:Arial; font-size:30px; font-weight:bold;">@Html.DisplayFor(model => model.WordOriginal)</h4>
     </div>
-    <div>
-        Your answer: <input type="text" name="usersAnswerTextBox" id="theInput" /><br />
+    <div style="margin-left:595px">
+        <input type="button" value="Show answer" onclick="showhide()" class="btn btn-default" /><br />
     </div>
-    <div>
-        <input type="button" value="Check" onclick="showhide(),changeThis()" class="btn btn-default" /><br />
-    </div>
-        <div id="checking" style="display:none" />
+    <div id="checking" style="display:none" />
         <script type="text/javascript">
             function showhide() {
-                var div = document.getElementById("checking","checking2");
+                var div = document.getElementById("checking");
                 div.style.display = "block";
             }
-            function changeThis() {
-                var input = document.getElementById('theInput').value;
-                document.getElementById('usersAnswer').innerHTML = input;
-            }
+            //function changeThis() {
+            //    var input = document.getElementById('theInput').value;
+            //    document.getElementById('usersAnswer').innerHTML = input;
+            //}
         </script>
 
     //if (input==wordTranslation) then <h3 color=green> Correct! </h3>
     // else <h3 color=red> Incorrect! </h3>
     /// wybacz pseudokod
 
-    <div id="checking"> Correct answer: <p style="color:green">@Html.DisplayFor(model => model.WordTranslation)</p> </div>
-    <div id="checking"> Your answer: <p><span id='usersAnswer'></span></p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
-                                                                                        <input id="checking2" type="button" value="Next" class="btn btn-default" onclick="javascript:location.reload(true)" />
-
+    <div id="checking" style="margin-left:490px;">
+        Correct answer: <div id="checking" style="width: 320px;
+height:140px;
+    padding: 10px;
+    border: 1px solid gray;
+    text-align:center;
+    margin-bottom:5px;
+    background-color:lavenderblush;"><p style="font-family:Arial; font-weight:bold; font-size:30px; color:green;margin-top:33px">@Html.DisplayFor(model => model.WordTranslation)</p></div>
+</div>
+    //<div id="checking"> Your answer: <p><span id='usersAnswer'></span></p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
     <div>
-        @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID}, null)
+        <input id="checking2" type="button" value="I got it right!" class="btn btn-default" onclick="javascript:location.reload(true)" style="float:left; color:green;margin-left:520px" />
+        <input id="checking2" type="button" value="I was wrong!" class="btn btn-default" onclick="javascript:location.reload(true)" style="float:left; color:red;margin-left:60px" />
     </div>
-
+    <div>
+        <br />
+        <br />
+        @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID }, null)
+    </div>
 } 

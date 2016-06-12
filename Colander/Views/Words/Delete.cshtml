@@ -4,13 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h2 style="font-family:'Copperplate Gothic'; margin-left:580px; margin-top:0px">Delete</h2>
+<h3 style="font-family:'Copperplate Gothic'; margin-left:360px; margin-top:0px">Are you sure you want to delete this word?</h3>
 <div>
-    <h4>Word</h4>
-    <hr />
-    <dl class="dl-horizontal">
+
+    <dl class="dl-horizontal"style="margin-left:420px">
         <dt>
             @Html.DisplayNameFor(model => model.WordList.WordListID)
         </dt>
@@ -41,7 +39,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" style="margin-left:610px" />
+            <br />
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

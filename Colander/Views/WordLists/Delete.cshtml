@@ -4,20 +4,25 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2 style="font-family:'Copperplate Gothic'; margin-left:580px; margin-top:0px">Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 style="font-family:'Copperplate Gothic'; margin-left:330px; margin-top:0px">Are you sure you want to delete this list of words?</h3>
 <div>
-    <h4>WordList</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
 
+    <dl class="dl-horizontal"style="margin-left:440px">
+        <dt>
+            @Html.DisplayNameFor(model => model.WordListName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WordListName)
+        </dd>
+    </dl>
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" style="margin-left:600px; margin-top:0px" /> 
+            <br />
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
