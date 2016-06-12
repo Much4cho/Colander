@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Colander.WordService.WordList>
 @{
-    ViewBag.Title = "Lists";
+    ViewBag.Title = "Index";
 }
 
     <div  style="margin-left: 255px">
@@ -28,7 +28,7 @@
                         // <- wysypuje, bo nie ma tego, ale gdy dodam, wywala błąd przy db.SaveChanges 
                         <input type="submit" value="Change name" class="btn btn-primary" style="float:left; margin-right:3px"  />
                     }
-                    @using (Html.BeginForm("Your_words", "Words", new { id = item.WordListID }))
+                    @using (Html.BeginForm("Index", "Words", new { id = item.WordListID }))
                     {
                         <input type="submit" value="Show words" class="btn btn-primary" style="float:left; margin-right:3px"/>
                     }

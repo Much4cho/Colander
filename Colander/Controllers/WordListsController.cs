@@ -15,7 +15,7 @@ namespace Colander.Controllers
         private WordListDBContext db = new WordListDBContext();
 
         // GET: WordLists
-        public ActionResult Lists()
+        public ActionResult Index()
         {
             return View(db.WordLists.ToList());
         }
