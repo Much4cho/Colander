@@ -7,10 +7,11 @@
 </form>
 <div style="margin-left:220px">
     <h2 style="display:inline">Words in this list:</h2>
+
     <p style="float:right; margin-right:3px">
         @Html.ActionLink("Add new word", "Create", new { id = ViewBag.CurrentListID }, new { @class = "btn btn-primary" })    @*currentID*@
     </p>
-    <p style="float:right;margin-right:3px">
+    <p style="float:right; margin-right:3px">
         @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = ViewBag.CurrentListID }, new { @class = "btn btn-primary" })
     </p>
     <table class="table" style="width:1000px">
@@ -24,7 +25,9 @@
             <th style="width:300px">
                 @Html.DisplayNameFor(model => model.WordTranslation)
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
         </tr>
         @foreach (var item in Model)
         {
@@ -32,10 +35,10 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.WordList.WordListID)
                     </td>*@
-                <td style="width:310px">
+                <td style="width:310px; font-size:16px; font-family:'Lucida Sans'">
                     @Html.DisplayFor(modelItem => item.WordOriginal)
                 </td>
-                <td style="width:310px">
+                <td style="width:310px; font-size:16px; font-family:'Lucida Sans'">
                     @Html.DisplayFor(modelItem => item.WordTranslation)
                 </td>
                 <td style="width:380px">
@@ -48,5 +51,5 @@
     </table>
 </div>
 <div>
-    @Html.ActionLink("Back to Lists", "Index","WordLists")
+    @Html.ActionLink("Back to Lists", "Index", "WordLists")
 </div>
