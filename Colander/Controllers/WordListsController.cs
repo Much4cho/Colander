@@ -32,6 +32,7 @@ namespace Colander.Controllers
             {
                 return HttpNotFound();
             }
+            ViewData["ListID"] = 1;
             return View(wordList);
         }
 

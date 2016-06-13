@@ -28,11 +28,13 @@ namespace Colander.Controllers
 
                 }
 
-                id =CurrentListID;
+                id = CurrentListID;
 
             }
             //Word word = db.Words.Find(id);
-            CurrentListID = id;
+            CurrentListID = 2;
+            ViewBag.CurrentListID = id;
+            
             var words = wordService.GetForListId(id);
 
 
@@ -59,7 +61,7 @@ namespace Colander.Controllers
         // GET: Words/Create
         public ActionResult Create()
         {
-             ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID");
+            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID");
             return View();
         }
 
@@ -74,7 +76,7 @@ namespace Colander.Controllers
             {
                 db.Words.Add(word);
                 db.SaveChanges();
-                return RedirectToAction("Index",new { id = CurrentListID} );
+                return RedirectToAction("Index", new { id = CurrentListID });
             }
 
             ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
