@@ -10,16 +10,11 @@
     @Html.AntiForgeryToken()
     <div style="margin-left:490px;">Word:</div>
     
-    <div style="width: 320px;
-                height:140px;
-                padding: 10px;
-                border: 1px solid gray;
-                text-align:center;
-                margin-left:490px;
-                margin-bottom:5px;
-                background-color:lavenderblush;">
-
-        <h4 style="margin-top:40px; font-family:Arial; font-size:30px; font-weight:bold;">@Html.DisplayFor(model => model.WordOriginal)</h4>
+    <div class="div flashcard">
+        <h4 style="margin-top:40px; 
+            font-family:Arial; 
+            font-size:30px; 
+            font-weight:bold;">@Html.DisplayFor(model => model.WordOriginal)</h4>
     </div>
 
     <div style="margin-left:595px">
@@ -35,20 +30,13 @@
             }
         </script>
 
-    <div id="checking" style="margin-left:490px;">Correct answer: 
-    <div id="checking" style="width: 320px;
-                              height:140px;
-                              padding: 10px;
-                              border: 1px solid gray;
-                              text-align:center;
-                              margin-bottom:5px;
-                              background-color:lavenderblush;">
+    <div id="checking" style="margin-left:490px;">Correct answer: </div>
+    <div id="checking" class="div flashcard">
         <p style="font-family:Arial; 
                   font-weight:bold; 
                   font-size:30px; 
                   color:green;
                   margin-top:33px">@Html.DisplayFor(model => model.WordTranslation)</p>
-    </div>
     </div>
    
     <div>
