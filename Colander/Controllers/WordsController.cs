@@ -57,20 +57,7 @@ namespace Colander.Controllers
             return View(words.ToList());
         }
 
-        // GET: Words/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Word word = db.Words.Find(id);
-            if (word == null)
-            {
-                return HttpNotFound();
-            }
-            return View(word);
-        }
+  
 
         // GET: Words/Create
         public ActionResult Create()
@@ -96,6 +83,8 @@ namespace Colander.Controllers
             ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
+
+
 
         // GET: Words/Edit/5
         public ActionResult Edit(int? id)
@@ -130,6 +119,8 @@ namespace Colander.Controllers
             return View(word);
         }
 
+
+
         // GET: Words/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -155,6 +146,7 @@ namespace Colander.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
 
         protected override void Dispose(bool disposing)

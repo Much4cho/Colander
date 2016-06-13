@@ -287,20 +287,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\WordLists\Create.cshtml" />
     <Content Include="Views\WordLists\Delete.cshtml" />
-    <Content Include="Views\WordLists\Details.cshtml" />
     <Content Include="Views\WordLists\Edit.cshtml" />
     <Content Include="Views\WordLists\Index.cshtml" />
     <Content Include="Views\Words\Create.cshtml" />
     <Content Include="Views\Words\Delete.cshtml" />
-    <Content Include="Views\Words\Details.cshtml" />
     <Content Include="Views\Words\Edit.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
     <Content Include="Views\Learn\Learn.cshtml" />
     <Content Include="Views\Learn\LearnWord.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\WordLearning\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

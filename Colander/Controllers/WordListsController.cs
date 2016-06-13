@@ -15,27 +15,14 @@ namespace Colander.Controllers
         private WordListDBContext db = new WordListDBContext();
         private WordListService wordListService = new WordListService();
 
+
         // GET: WordLists
         public ActionResult Index()
         {
             return View(db.WordLists.ToList());
         }
 
-        // GET: WordLists/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            WordList wordList = db.WordLists.Find(id);
-            if (wordList == null)
-            {
-                return HttpNotFound();
-            }
-            ViewData["ListID"] = 1;
-            return View(wordList);
-        }
+
 
         // GET: WordLists/Create
         public ActionResult Create()
@@ -59,6 +46,8 @@ namespace Colander.Controllers
 
             return View(wordList);
         }
+
+
 
         // GET: WordLists/Edit/5
         public ActionResult Edit(int? id)
@@ -91,6 +80,8 @@ namespace Colander.Controllers
             return View(wordList);
         }
 
+
+
         // GET: WordLists/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -116,6 +107,8 @@ namespace Colander.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
