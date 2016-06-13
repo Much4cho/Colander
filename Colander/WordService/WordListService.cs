@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace Colander.WordService
 {
-    public class WordListService
+    public class WordListService : IWordListService
     {
         private WordListDBContext _db;
 
         public WordListService()
         {
             _db = new WordListDBContext();
+        }
+
+
+        public void ShowLists()
+        {
+            _db.WordLists.ToList();
         }
         public WordList GetById(int id)
         {
@@ -23,34 +30,24 @@ namespace Colander.WordService
             _db.WordLists.Add(wordList);
             _db.SaveChanges();
         }
+        public void Edit(WordList wordList)
+        {
+            _db.Entry(wordList).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+        public void Delete(WordList wordList)
+        {
+            _db.WordLists.Remove(wordList);
+            _db.SaveChanges();
+        }
     }
 
-    public class WordService : IWordService
+    public interface IWordListService
     {
-        private WordListDBContext _db;
-        //public int? CurrentListID { get; set; }
-
-        public WordService()
-        {
-            _db = new WordListDBContext();
-        }
-
-        public IEnumerable<Word> GetForListId(int? wordListId)
-        {
-
-            return _db.WordLists.First(list => list.WordListID == wordListId).Words;
-
-            //return _db.WordLists.Find(wordListId).Words;
-        }
-        public Word GetForWordId(int? wordId)
-        {
-            return _db.Words.Find(wordId);
-        }
+        WordList GetById(int id);
+        void Add(WordList wordList);
+        void Edit(WordList wordList);
+        void Delete(WordList wordList);
     }
 
-    public interface IWordService
-    {
-        IEnumerable<Word> GetForListId(int? wordListId);
-        Word GetForWordId(int? wordId);
-    }
 }

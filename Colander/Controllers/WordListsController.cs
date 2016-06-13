@@ -12,14 +12,16 @@ namespace Colander.Controllers
 {
     public class WordListsController : Controller
     {
-        private WordListDBContext db = new WordListDBContext();
-        private WordListService wordListService = new WordListService();
-
-
+        //private WordListDBContext db = new WordListDBContext();
+        private WordService.IWordListService _wordService;
+        public WordListsController(IWordListService wordListService)
+        {
+            _wordService = wordListService;
+        }
         // GET: WordLists
         public ActionResult Index()
         {
-            return View(db.WordLists.ToList());
+            return View(_wordService);
         }
 
 
@@ -39,8 +41,10 @@ namespace Colander.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.WordLists.Add(wordList);
-                db.SaveChanges();
+                //db.WordLists.Add(wordList);
+                //db.SaveChanges();
+
+                _wordService.Add(wordList);
                 return RedirectToAction("Index");
             }
 
@@ -56,7 +60,8 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WordList wordList = db.WordLists.Find(id);
+            //WordList wordList = db.WordLists.Find(id);
+            WordList wordList = _wordService.GetById((int)id);
             if (wordList == null)
             {
                 return HttpNotFound();
@@ -73,8 +78,10 @@ namespace Colander.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(wordList).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(wordList).State = EntityState.Modified;
+                //db.SaveChanges();
+
+                _wordService.Edit(wordList);
                 return RedirectToAction("Index");
             }
             return View(wordList);
@@ -89,7 +96,8 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WordList wordList = db.WordLists.Find(id);
+            //WordList wordList = db.WordLists.Find(id);
+            WordList wordList = _wordService.GetById((int)id);
             if (wordList == null)
             {
                 return HttpNotFound();
@@ -102,21 +110,22 @@ namespace Colander.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            WordList wordList = db.WordLists.Find(id);
-            db.WordLists.Remove(wordList);
-            db.SaveChanges();
+            WordList wordList = _wordService.GetById(id);
+            //db.WordLists.Remove(wordList);
+            //db.SaveChanges();
+            _wordService.Delete(wordList);
             return RedirectToAction("Index");
         }
 
 
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }
