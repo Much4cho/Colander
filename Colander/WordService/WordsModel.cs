@@ -9,7 +9,6 @@ namespace Colander.WordService
 {
     public class WordList
     {
-        private int i = 0;
         public int WordListID { get; set; }
 
         [Display(Name = "Word List Name")]
@@ -19,7 +18,6 @@ namespace Colander.WordService
     }
     public class Word
     {
-        private int i = 0;
         public int WordID { get; set; }
         public string WordOriginal { get; set; }
         public string WordTranslation { get; set; }
@@ -32,6 +30,11 @@ namespace Colander.WordService
     {
         public DbSet<WordList> WordLists { get; set; }
         public DbSet<Word> Words { get; set; }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
 
+        //    modelBuilder.Entity<Word>().HasKey(word => word.WordID);
+        //}
     }
 }

@@ -25,7 +25,7 @@ namespace Colander.WordService
         }
     }
 
-    public class WordService
+    public class WordService : IWordService
     {
         private WordListDBContext _db;
         //public int? CurrentListID { get; set; }
@@ -46,5 +46,11 @@ namespace Colander.WordService
         {
             return _db.Words.Find(wordId);
         }
+    }
+
+    public interface IWordService
+    {
+        IEnumerable<Word> GetForListId(int? wordListId);
+        Word GetForWordId(int? wordId);
     }
 }

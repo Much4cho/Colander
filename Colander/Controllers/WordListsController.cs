@@ -13,6 +13,7 @@ namespace Colander.Controllers
     public class WordListsController : Controller
     {
         private WordListDBContext db = new WordListDBContext();
+        private WordListService wordListService = new WordListService();
 
         // GET: WordLists
         public ActionResult Index()

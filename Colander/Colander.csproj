@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201606101020307_Listname.Designer.cs">
       <DependentUpon>201606101020307_Listname.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606130725052_noi.cs" />
+    <Compile Include="Migrations\201606130725052_noi.Designer.cs">
+      <DependentUpon>201606130725052_noi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -309,6 +313,9 @@
     <EmbeddedResource Include="Migrations\201606101020307_Listname.resx">
       <DependentUpon>201606101020307_Listname.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606130725052_noi.resx">
+      <DependentUpon>201606130725052_noi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
