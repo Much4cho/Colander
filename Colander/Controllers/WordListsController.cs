@@ -21,7 +21,7 @@ namespace Colander.Controllers
         // GET: WordLists
         public ActionResult Index()
         {
-            return View(_wordService);
+            return View(_wordService.ShowLists());
         }
 
 

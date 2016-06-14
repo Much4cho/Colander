@@ -16,9 +16,9 @@ namespace Colander.WordService
         }
 
 
-        public void ShowLists()
+        public IEnumerable<WordList> ShowLists()
         {
-            _db.WordLists.ToList();
+            return _db.WordLists.ToList();
         }
         public WordList GetById(int id)
         {
@@ -45,6 +45,7 @@ namespace Colander.WordService
     public interface IWordListService
     {
         WordList GetById(int id);
+        IEnumerable<WordList> ShowLists();
         void Add(WordList wordList);
         void Edit(WordList wordList);
         void Delete(WordList wordList);
