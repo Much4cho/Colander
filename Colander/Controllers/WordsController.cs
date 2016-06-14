@@ -45,14 +45,16 @@ namespace Colander.Controllers
                 //}
 
                 //id = CurrentListID;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             }
             //Word word = db.Words.Find(id);
             //CurrentListID = id;
             ViewBag.CurrentListID = id;
-
+            var _currentList = new Word() { WordListID = (int)id };
+            IEnumerable<Word> currentList = new Word [] { _currentList };
             IEnumerable<Word> words = _wordService.GetForListId(id);
-
+            words.Concat(currentList);
 
             //var words = db.Words.Include(w => w.WordList);
 
@@ -69,7 +71,7 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            
             return View();
         }
 

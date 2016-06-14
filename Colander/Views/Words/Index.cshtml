@@ -8,10 +8,11 @@
 <div style="margin-left:220px">
     <h2 style="display:inline">Words in this list:</h2>
     <p style="float:right; margin-right:3px">
-        @Html.ActionLink("Add new word", "Create", new { id = ViewBag.CurrentListID }, new { @class = "btn btn-primary" })    @*currentID*@
+        @Html.ActionLink("Add new word", "Create", new { id = @*ViewBag.CurrentListID*@ Model.Last().WordListID}, new { @class = "btn btn-primary" })    @*currentID*@
     </p>
     <p style="float:right;margin-right:3px">
-        @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = ViewBag.CurrentListID }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = @*ViewBag.CurrentListID*@  Model.Last().WordListID
+   }, new { @class = "btn btn-primary" })
     </p>
     <table class="table" style="width:1000px">
         <tr style="background-color:darkgray; color:black;">
