@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Colander.WordService.Word>
+﻿@*@model IEnumerable<Colander.WordService.Word>*@
+@model Colander.Controllers.WordIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -9,11 +10,11 @@
     <h2 style="display:inline">Words in this list:</h2>
     <p style="float:right; margin-right:3px">
         @Html.ActionLink("Add new word", "Create", 
-       new { id = @*ViewBag.CurrentListID*@ Model.Last().WordListID}, new { @class = "btn btn-primary" })    @*currentID*@
+       new { id = @*ViewBag.CurrentListID*@ Model.WordListId }, new { @class = "btn btn-primary" })    @*currentID*@
     </p>
     <p style="float:right;margin-right:3px">
         @Html.ActionLink("Start Learning", "Learn", "Learn", 
-       new { id = @*ViewBag.CurrentListID*@  Model.Last().WordListID}, new { @class = "btn btn-primary" })
+       new { id = @*ViewBag.CurrentListID*@  Model.WordListId }, new { @class = "btn btn-primary" })
     </p>
     <table class="table" style="width:1000px">
         <tr style="background-color:darkgray; color:black;">
@@ -21,10 +22,10 @@
                     @Html.DisplayNameFor(model => model.WordList.WordListID)
                 </th>*@
             <th style="width:300px">
-                @Html.DisplayNameFor(model => model.WordOriginal)
+                @Html.DisplayNameFor(model => model.Words.)
             </th>
             <th style="width:300px">
-                @Html.DisplayNameFor(model => model.WordTranslation)
+                @Html.DisplayNameFor(model => model.Words.WordTranslation)
             </th>
             <th></th>
         </tr>
