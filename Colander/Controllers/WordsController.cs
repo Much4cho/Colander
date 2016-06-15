@@ -19,13 +19,18 @@ namespace Colander.Controllers
         public int WordListID { get; set; }
     }
 
+    public class WordIndexViewModel
+    {
+        public IEnumerable<Word> Words { get; set; }
+        public int WordListId { get; set; }
+    }
     
 
     public class WordsController : Controller
     {
         //private WordListDBContext db = new WordListDBContext();
         private WordService.IWordService _wordService = new WordService.WordService();
-        private static int? CurrentListID = null;
+        private int? CurrentListID = null;
 
         public WordsController(IWordService wordService)
         {
@@ -71,8 +76,8 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            return View();
+            Word word = new Word() { WordListID = (int)id };
+            return View(word);
         }
 
         // POST: Words/Create

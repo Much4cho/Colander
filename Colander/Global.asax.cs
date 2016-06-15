@@ -27,7 +27,7 @@ namespace Colander
             // OPTIONAL: Register model binders that require DI.
             builder.RegisterModelBinders(System.Reflection.Assembly.GetExecutingAssembly());
             builder.RegisterModelBinderProvider();
-            
+
             // OPTIONAL: Register web abstractions like HttpContextBase.
             builder.RegisterModule<AutofacWebTypesModule>();
 

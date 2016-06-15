@@ -31,6 +31,12 @@ namespace Colander.WordService
 
         public void Add(Word word)
         {
+            //word.AddDate = DateTime.UtcNow;
+            //if (word.WordTranslation.Length >= 10)
+            //{
+            //    word.IsComplicated = true;
+            //}
+
             _db.Words.Add(word);
             _db.SaveChanges();
         }
