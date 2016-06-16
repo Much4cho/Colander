@@ -36,6 +36,7 @@ namespace Colander.WordServices
             //{
             //    word.IsComplicated = true;
             //}
+            word.WordColanderID = 0;
             _wordRepository.Add(word);
         }
         public void Edit(Word word)

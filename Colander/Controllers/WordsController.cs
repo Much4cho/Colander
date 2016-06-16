@@ -10,7 +10,7 @@ using Colander.WordServices;
 
 namespace Colander.Controllers
 {
-    public class WordIndexViewModel
+    public class WordViewModel
     {
         public IEnumerable<Word> Words { get; set; }
         public int WordListId { get; set; }
@@ -19,7 +19,6 @@ namespace Colander.Controllers
 
     public class WordsController : Controller
     {
-        //private WordListDBContext db = new WordListDBContext();
         private WordServices.IWordService _wordService;
         private int? CurrentListID = null;
 
@@ -35,12 +34,9 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Word word = db.Words.Find(id);
-            //CurrentListID = id;
-            ViewBag.CurrentListID = id;
 
             IEnumerable<Word> words = _wordService.GetForListId(id);
-            var wordsView = new WordIndexViewModel() { Words = words, WordListId = (int)id };
+            var wordsView = new WordViewModel() { Words = words, WordListId = (int)id };
             //var words = db.Words.Include(w => w.WordList);
 
             return View(wordsView);
@@ -56,8 +52,9 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Word word = new Word() { WordListID = (int)id };
-            return View(word);
+            //Word word = new Word() { WordListID = (int)id };
+            var wordsView = new WordViewModel() {WordListId = (int)id };
+            return View(wordsView);
         }
 
         // POST: Words/Create
