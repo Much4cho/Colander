@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201606130725052_noi.Designer.cs">
       <DependentUpon>201606130725052_noi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606161139575_WordColander.cs" />
+    <Compile Include="Migrations\201606161139575_WordColander.Designer.cs">
+      <DependentUpon>201606161139575_WordColander.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -227,13 +231,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\WordListsController.cs" />
-    <Compile Include="WordService\Business.cs" />
-    <Compile Include="WordService\ColanderRepository.cs" />
-    <Compile Include="WordService\WordListRepository.cs" />
-    <Compile Include="WordService\WordRepository.cs" />
-    <Compile Include="WordService\WordListService.cs" />
-    <Compile Include="WordService\WordService.cs" />
-    <Compile Include="WordService\WordsModel.cs" />
+    <Compile Include="WordServices\ColanderEngine.cs" />
+    <Compile Include="WordServices\WordListRepository.cs" />
+    <Compile Include="WordServices\WordRepository.cs" />
+    <Compile Include="WordServices\WordListService.cs" />
+    <Compile Include="WordServices\WordService.cs" />
+    <Compile Include="WordServices\WordsModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Colander.WordService.WordListDBContext.mdf" />
@@ -326,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606130725052_noi.resx">
       <DependentUpon>201606130725052_noi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606161139575_WordColander.resx">
+      <DependentUpon>201606161139575_WordColander.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Colander.WordService;
+using Colander.WordServices;
 
 namespace Colander.Controllers
 {
@@ -20,7 +20,7 @@ namespace Colander.Controllers
     public class WordsController : Controller
     {
         //private WordListDBContext db = new WordListDBContext();
-        private WordService.IWordService _wordService = new WordService.WordService();
+        private WordServices.IWordService _wordService;
         private int? CurrentListID = null;
 
         public WordsController(IWordService wordService)
@@ -154,10 +154,10 @@ namespace Colander.Controllers
         {
             if (disposing)
             {
-                _wordService.Dispose();
+                //_wordService.Dispose();
 
             }
-            base.dispose(disposing);
+            base.Dispose(disposing);
         }
     }
 }

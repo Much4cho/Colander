@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Colander.WordService
+namespace Colander.WordServices
 {
-    public class CoalnderEngine : IColander
+    public class ColanderEngine : IColanderEngine
     {
         public IEnumerable<IEnumerable<Word>> ColanderSystem;
 
@@ -17,7 +17,7 @@ namespace Colander.WordService
 
         public void Move(Word word, int id)
         {
-            word.ColanderID = id;
+            word.WordColanderID = id;
         }
 
         public bool Check(Word Original, string Translation)

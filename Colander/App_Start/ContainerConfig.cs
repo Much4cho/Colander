@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using System.Web.Mvc;
+using Colander.WordServices;
 
 namespace Colander.App_Start
 {
@@ -27,8 +28,10 @@ namespace Colander.App_Start
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
 
-            builder.Register(c => new WordService.WordListService()).As<WordService.IWordListService>();
-            builder.Register(c => new WordService.WordService()).As<WordService.IWordService>();
+            builder.Register(c => new WordListRepository()).As<IWordListRepository>();
+            builder.Register(c => new WordRepository()).As<IWordRepository>();
+            builder.Register(c => new WordListService(c.Resolve<IWordListRepository>())).As<IWordListService>();
+            builder.Register(c => new WordService(c.Resolve<IWordRepository>())).As<IWordService>();
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();

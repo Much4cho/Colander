@@ -1,4 +1,4 @@
-﻿using Colander.WordService;
+﻿using Colander.WordServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Colander.Controllers
     public class LearnController : Controller
     {
         private WordListDBContext db = new WordListDBContext();
-        private WordService.WordService wordService = new WordService.WordService();
+        private WordServices.WordService wordService;
         public string usersAnswer;
 
 

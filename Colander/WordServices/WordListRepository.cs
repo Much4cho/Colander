@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace Colander.WordService
+namespace Colander.WordServices
 {
-    public class WordListRepository
+    public class WordListRepository : IWordListRepository
     {
         private WordListDBContext _db;
 
@@ -41,8 +41,6 @@ namespace Colander.WordService
             _db.SaveChanges();
         }
     }
-
-
 
     public interface IWordListRepository
     {
