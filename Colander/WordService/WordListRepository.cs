@@ -6,40 +6,45 @@ using System.Web;
 
 namespace Colander.WordService
 {
-    public class WordListService : IWordListService
+    public class WordListRepository
     {
-        private IWordListRepository _wordListRepository;
+        private WordListDBContext _db;
 
-        public WordListService(IWordListRepository wordListRepository)
+        public WordListRepository()
         {
-            _wordListRepository = wordListRepository;
+            _db = new WordListDBContext();
         }
 
 
         public IEnumerable<WordList> ShowLists()
         {
-            return _wordListRepository.ShowLists();
+            return _db.WordLists.ToList();
         }
         public WordList GetById(int id)
         {
-            return _wordListRepository.GetById(id);
+            return _db.WordLists.Find(id);
         }
 
         public void Add(WordList wordList)
         {
-            _wordListRepository.Add(wordList);
+            _db.WordLists.Add(wordList);
+            _db.SaveChanges();
         }
         public void Edit(WordList wordList)
         {
-            _wordListRepository.Edit(wordList);
+            _db.Entry(wordList).State = EntityState.Modified;
+            _db.SaveChanges();
         }
         public void Delete(WordList wordList)
         {
-            _wordListRepository.Delete(wordList);
+            _db.WordLists.Remove(wordList);
+            _db.SaveChanges();
         }
     }
 
-    public interface IWordListService
+
+
+    public interface IWordListRepository
     {
         WordList GetById(int id);
         IEnumerable<WordList> ShowLists();
@@ -47,5 +52,4 @@ namespace Colander.WordService
         void Edit(WordList wordList);
         void Delete(WordList wordList);
     }
-
 }

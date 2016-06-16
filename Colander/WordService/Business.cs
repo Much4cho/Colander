@@ -5,20 +5,21 @@ using System.Web;
 
 namespace Colander.WordService
 {
-    public class Business : IBusiness
+    public class CoalnderEngine : IColander
     {
         public IEnumerable<IEnumerable<Word>> ColanderSystem;
 
-        public Business()
+        public ColanderEngine()
         {
 
         }
 
 
-        public void Move(Word word, List<Word> GCList)
+        public void Move(Word word, int id)
         {
-
+            word.ColanderID = id;
         }
+
         public bool Check(Word Original, string Translation)
         {
             bool outcome;
@@ -32,11 +33,12 @@ namespace Colander.WordService
             }
             return outcome;
         }
+        
     }
 
-    public interface IBusiness
+    public interface IColanderEngine
     {
-        void Move(Word word, List<Word> GCList);
+        void Move(Word word, int id);
         bool Check(Word Original, string Translation);
     }
 }

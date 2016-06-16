@@ -199,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -227,6 +228,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\WordListsController.cs" />
     <Compile Include="WordService\Business.cs" />
+    <Compile Include="WordService\ColanderRepository.cs" />
+    <Compile Include="WordService\WordListRepository.cs" />
+    <Compile Include="WordService\WordRepository.cs" />
     <Compile Include="WordService\WordListService.cs" />
     <Compile Include="WordService\WordService.cs" />
     <Compile Include="WordService\WordsModel.cs" />

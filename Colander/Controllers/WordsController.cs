@@ -15,7 +15,7 @@ namespace Colander.Controllers
         public IEnumerable<Word> Words { get; set; }
         public int WordListId { get; set; }
     }
-    
+
 
     public class WordsController : Controller
     {
@@ -150,13 +150,14 @@ namespace Colander.Controllers
 
 
 
-        //protected override void dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.dispose();
-        //    }
-        //    base.dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _wordService.Dispose();
+
+            }
+            base.dispose(disposing);
+        }
     }
 }

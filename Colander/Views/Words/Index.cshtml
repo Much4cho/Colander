@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<Colander.WordService.Word>*@
-@model Colander.Controllers.WordIndexViewModel
+﻿@model Colander.Controllers.WordIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -22,14 +21,14 @@
                     @Html.DisplayNameFor(model => model.WordList.WordListID)
                 </th>*@
             <th style="width:300px">
-                @Html.DisplayNameFor(model => model.Words.)
+                Orginal name
             </th>
             <th style="width:300px">
-                @Html.DisplayNameFor(model => model.Words.WordTranslation)
+                Translation
             </th>
             <th></th>
         </tr>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Words)
         {
             <tr>
                 @*<td>

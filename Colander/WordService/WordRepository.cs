@@ -6,50 +6,48 @@ using System.Web;
 
 namespace Colander.WordService
 {
-    public class WordService : IWordService
+    public class WordRepository : IWordRepository
     {
-        private IWordRepository _wordRepository;
-        //public int? CurrentListID { get; set; }
+        private WordListDBContext _db;
 
-        public WordService(IWordRepository wordRepository)
+        public WordRepository()
         {
-            _wordRepository = wordRepository;
+            _db = new WordListDBContext();
         }
 
 
         public IEnumerable<Word> GetForListId(int? wordListId)
         {
-
-            return _wordRepository.GetForListId(wordListId);
-
+            return _db.WordLists.First(list => list.WordListID == wordListId).Words;
             //return _db.WordLists.Find(wordListId).Words;
         }
         public Word GetForWordId(int? wordId)
         {
-            return _wordRepository.GetForWordId(wordId);
+            return _db.Words.Find(wordId);
         }
 
         public void Add(Word word)
         {
-            //word.AddDate = DateTime.UtcNow;
-            //if (word.WordTranslation.Length >= 10)
-            //{
-            //    word.IsComplicated = true;
-            //}
-            _wordRepository.Add(word);
+            _db.Words.Add(word);
+            _db.SaveChanges();
         }
+
         public void Edit(Word word)
         {
-            _wordRepository.Edit(word);
+            _db.Entry(word).State = EntityState.Modified;
+            _db.SaveChanges();
         }
         public void Delete(Word word)
         {
-            _wordRepository.Delete(word);
+            _db.Words.Remove(word);
+            _db.SaveChanges();
         }
-
+        void Dispose()
+        {
+            _db.Dispose();
+        }
     }
-
-    public interface IWordService
+    public interface IWordRepository
     {
         IEnumerable<Word> GetForListId(int? wordListId);
         Word GetForWordId(int? wordId);
