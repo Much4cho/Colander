@@ -27,7 +27,7 @@ namespace Colander.WordServices
         public virtual WordList WordList { get; set; }
 
 
-        public int WordColanderID { get; set; }
+        public int? WordColanderID { get; set; }
         public virtual WordColander WordColander {get; set;}
     }
     public class WordColander
@@ -40,6 +40,7 @@ namespace Colander.WordServices
     {
         public DbSet<WordList> WordLists { get; set; }
         public DbSet<Word> Words { get; set; }
+        public DbSet<WordColander> WordColanders { get; set; }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);

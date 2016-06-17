@@ -14,6 +14,7 @@ namespace Colander.Controllers
     {
         public IEnumerable<Word> Words { get; set; }
         public int WordListId { get; set; }
+        public Word ViewWord { get; set; }
     }
 
 
@@ -52,9 +53,8 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Word word = new Word() { WordListID = (int)id };
-            var wordsView = new WordViewModel() {WordListId = (int)id };
-            return View(wordsView);
+            var word = new Word() { WordListID = (int)id };
+            return View(word);
         }
 
         // POST: Words/Create
@@ -66,10 +66,8 @@ namespace Colander.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Words.Add(word);
-                //db.SaveChanges();
                 _wordService.Add(word);
-                return RedirectToAction("Index", new { id = CurrentListID });
+                return RedirectToAction("Index", new { id = word.WordListID });
             }
 
             //ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
@@ -91,7 +89,6 @@ namespace Colander.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
 

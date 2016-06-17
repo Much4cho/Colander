@@ -7,11 +7,11 @@ namespace Colander.WordServices
 {
     public class ColanderEngine : IColanderEngine
     {
-        public IEnumerable<IEnumerable<Word>> ColanderSystem;
+        public IEnumerable<Word> ColanderSystem;
 
         public ColanderEngine()
         {
-            var 
+            
         }
 
 

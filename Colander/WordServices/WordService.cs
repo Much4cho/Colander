@@ -9,7 +9,6 @@ namespace Colander.WordServices
     public class WordService : IWordService
     {
         private IWordRepository _wordRepository;
-        //public int? CurrentListID { get; set; }
 
         public WordService(IWordRepository wordRepository)
         {
@@ -19,10 +18,7 @@ namespace Colander.WordServices
 
         public IEnumerable<Word> GetForListId(int? wordListId)
         {
-
             return _wordRepository.GetForListId(wordListId);
-
-            //return _db.WordLists.Find(wordListId).Words;
         }
         public Word GetForWordId(int? wordId)
         {
@@ -36,7 +32,8 @@ namespace Colander.WordServices
             //{
             //    word.IsComplicated = true;
             //}
-            word.WordColanderID = 0;
+            word.WordColanderID = 1;
+            _wordRepository.AddColander((int)word.WordColanderID);
             _wordRepository.Add(word);
         }
         public void Edit(Word word)
@@ -47,7 +44,6 @@ namespace Colander.WordServices
         {
             _wordRepository.Delete(word);
         }
-
     }
 
     public interface IWordService
