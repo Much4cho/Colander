@@ -26,6 +26,9 @@
             <th style="width:300px">
                 Translation
             </th>
+            <th style="width:100px">
+                Colander ID
+            </th>
             <th></th>
         </tr>
         @foreach (var item in Model.Words)
@@ -39,6 +42,9 @@
                 </td>
                 <td style="width:310px">
                     @Html.DisplayFor(modelItem => item.WordTranslation)
+                </td>
+                <td style="width:100px">
+                    @Html.DisplayFor(modelItem => item.WordColanderID)
                 </td>
                 <td style="width:380px">
                     @Html.ActionLink("Edit word", "Edit", new { id = item.WordID }, new { @class = "btn btn-primary" })

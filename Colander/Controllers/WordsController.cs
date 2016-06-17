@@ -21,7 +21,6 @@ namespace Colander.Controllers
     public class WordsController : Controller
     {
         private WordServices.IWordService _wordService;
-        private int? CurrentListID = null;
 
         public WordsController(IWordService wordService)
         {
@@ -97,14 +96,14 @@ namespace Colander.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID")] Word word)
+        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID,WordColanderID")] Word word)
         {
             if (ModelState.IsValid)
             {
                 //db.Entry(word).State = EntityState.Modified;
                 //db.SaveChanges();
                 _wordService.Edit(word);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = word.WordListID });
             }
             //ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
@@ -139,7 +138,7 @@ namespace Colander.Controllers
             //db.SaveChanges();
             _wordService.Delete(word);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = word.WordListID });
         }
 
 
