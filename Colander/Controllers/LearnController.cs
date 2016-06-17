@@ -10,29 +10,25 @@ namespace Colander.Controllers
 {
     public class LearnController : Controller
     {
-        private WordListDBContext db = new WordListDBContext();
-        private WordServices.WordService wordService;
+        private IWordService _wordService;
         public string usersAnswer;
+
+        public LearnController(IWordService wordService)
+        {
+            _wordService = wordService;
+        }
 
 
         //Random words 
         // GET: Learn
         public ActionResult Learn(int? id)
         {
-
             if (id == null)
             {
-
-                //id = wordService.CurrentListID;
-
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
-            //Word word = db.Words.Find(id);
-            //wordService.CurrentListID = id;
-            //var word = wordService.GetForWordId(id);
             Random random = new Random();
-            var words = wordService.GetForListId(id);
+            var words = _wordService.GetForListId(id);
             Word word = null;
 
             while (words.Any() && word == null)
@@ -42,7 +38,6 @@ namespace Colander.Controllers
 
             if (word == null)
             {
-                
                 return HttpNotFound();
             }
 
@@ -59,16 +54,10 @@ namespace Colander.Controllers
 
             if (id == null)
             {
-
-                //id = wordService.CurrentListID;
-
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
             
-            //Word word = db.Words.Find(id);
-            //wordService.CurrentListID = id;
-            var word = wordService.GetForWordId(id);
+            var word = _wordService.GetForWordId(id);
             if (word == null)
             {
                 return HttpNotFound();

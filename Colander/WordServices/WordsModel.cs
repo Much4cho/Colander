@@ -36,7 +36,7 @@ namespace Colander.WordServices
         public virtual List<Word> Words { get; set; }
     }
 
-    public class WordListDBContext : DbContext
+    public class ColanderDBContext : DbContext
     {
         public DbSet<WordList> WordLists { get; set; }
         public DbSet<Word> Words { get; set; }

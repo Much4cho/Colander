@@ -8,11 +8,11 @@ namespace Colander.WordServices
 {
     public class WordListRepository : IWordListRepository
     {
-        private WordListDBContext _db;
+        private ColanderDBContext _db;
 
         public WordListRepository()
         {
-            _db = new WordListDBContext();
+            _db = new ColanderDBContext();
         }
 
 

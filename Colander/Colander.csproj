@@ -236,6 +236,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\WordListsController.cs" />
     <Compile Include="WordServices\ColanderEngine.cs" />
+    <Compile Include="WordServices\WordColanderRepository.cs" />
+    <Compile Include="WordServices\WordColanderService.cs" />
     <Compile Include="WordServices\WordListRepository.cs" />
     <Compile Include="WordServices\WordRepository.cs" />
     <Compile Include="WordServices\WordListService.cs" />

@@ -27,6 +27,8 @@ namespace Colander.Controllers
             _wordService = wordService;
         }
 
+
+
         // GET: Words
         public ActionResult Index(int? id)
         {
@@ -47,7 +49,6 @@ namespace Colander.Controllers
         // GET: Words/Create
         public ActionResult Create(int? id)
         {
-            //ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -68,8 +69,6 @@ namespace Colander.Controllers
                 _wordService.Add(word);
                 return RedirectToAction("Index", new { id = word.WordListID });
             }
-
-            //ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
 
@@ -82,7 +81,6 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Word word = db.Words.Find(id);
             Word word = _wordService.GetForWordId(id);
             if (word == null)
             {
@@ -100,12 +98,9 @@ namespace Colander.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(word).State = EntityState.Modified;
-                //db.SaveChanges();
                 _wordService.Edit(word);
                 return RedirectToAction("Index", new { id = word.WordListID });
             }
-            //ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
 
@@ -118,7 +113,6 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Word word = db.Words.Find(id);
             Word word = _wordService.GetForWordId(id);
             if (word == null)
             {
@@ -132,10 +126,7 @@ namespace Colander.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //Word word = db.Words.Find(id);
             Word word = _wordService.GetForWordId(id);
-            //db.Words.Remove(word);
-            //db.SaveChanges();
             _wordService.Delete(word);
 
             return RedirectToAction("Index", new { id = word.WordListID });
