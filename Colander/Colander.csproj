@@ -228,6 +228,14 @@
     <Compile Include="Migrations\201606170624395_nullableColanderID.Designer.cs">
       <DependentUpon>201606170624395_nullableColanderID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606200723090_DatesAdded.cs" />
+    <Compile Include="Migrations\201606200723090_DatesAdded.Designer.cs">
+      <DependentUpon>201606200723090_DatesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606200735374_GuessedRightDateNullable.cs" />
+    <Compile Include="Migrations\201606200735374_GuessedRightDateNullable.Designer.cs">
+      <DependentUpon>201606200735374_GuessedRightDateNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -342,6 +350,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606170624395_nullableColanderID.resx">
       <DependentUpon>201606170624395_nullableColanderID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606200723090_DatesAdded.resx">
+      <DependentUpon>201606200723090_DatesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606200735374_GuessedRightDateNullable.resx">
+      <DependentUpon>201606200735374_GuessedRightDateNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

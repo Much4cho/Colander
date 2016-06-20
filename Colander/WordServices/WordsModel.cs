@@ -28,12 +28,19 @@ namespace Colander.WordServices
 
 
         public int? WordColanderID { get; set; }
-        public virtual WordColander WordColander {get; set;}
+        public virtual WordColander WordColander { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime? GuessedRight { get; set; }
     }
     public class WordColander
     {
         public int WordColanderID { get; set; }
         public virtual List<Word> Words { get; set; }
+
+        public WordColander(int id)
+        {
+            WordColanderID = id;
+        }
     }
 
     public class ColanderDBContext : DbContext

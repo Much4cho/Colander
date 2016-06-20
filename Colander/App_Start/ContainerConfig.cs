@@ -30,8 +30,10 @@ namespace Colander.App_Start
 
             builder.Register(c => new WordListRepository()).As<IWordListRepository>();
             builder.Register(c => new WordRepository()).As<IWordRepository>();
+            builder.Register(c => new WordColanderRepository()).As<IWordColanderRepository>();
             builder.Register(c => new WordListService(c.Resolve<IWordListRepository>())).As<IWordListService>();
             builder.Register(c => new WordService(c.Resolve<IWordRepository>())).As<IWordService>();
+            builder.Register(c => new WordColanderService(c.Resolve<IWordColanderRepository>())).As<IWordColanderService>();
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();

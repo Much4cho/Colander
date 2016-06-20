@@ -46,14 +46,14 @@ namespace Colander.WordServices
         {
             _db.Dispose();
         }
-        public void AddColander(int id)
-        {
-            if ((_db.WordColanders.Find(id) == null))
-            {
-                _db.WordColanders.Add(new WordColander() { WordColanderID = id});
-                _db.SaveChanges();
-            }
-        }
+        //public void AddColander(int id)
+        //{
+        //    if ((_db.WordColanders.Find(id) == null))
+        //    {
+        //        _db.WordColanders.Add(new WordColander() { WordColanderID = id});
+        //        _db.SaveChanges();
+        //    }
+        //}
     }
     public interface IWordRepository
     {
@@ -62,6 +62,6 @@ namespace Colander.WordServices
         void Add(Word word);
         void Edit(Word word);
         void Delete(Word word);
-        void AddColander(int id);
+        //void AddColander(int id);
     }
 }

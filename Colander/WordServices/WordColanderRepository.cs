@@ -13,12 +13,31 @@ namespace Colander.WordServices
             _db = new ColanderDBContext();
         }
 
+
+        public IEnumerable<WordColander> ShowColanders()
+        {
+            return _db.WordColanders.ToList();
+        }
         public IEnumerable<Word> GetForColanderId(int? wordColanderId)
         {
             return _db.WordColanders.First(list => list.WordColanderID == wordColanderId).Words;
         }
-        public void Add(WordColander colander)
+        public bool DoesColanderExist(int colanderId)
         {
+            if (_db.WordColanders.Find(colanderId) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        public void Add(int id)
+        {
+            var colander = new WordColander(id);
             _db.WordColanders.Add(colander);
             _db.SaveChanges();
         }
@@ -34,9 +53,10 @@ namespace Colander.WordServices
     }
     public interface IWordColanderRepository
     {
+        IEnumerable<WordColander> ShowColanders();
         IEnumerable<Word> GetForColanderId(int? wordColanderId);
-        void Add(WordColander colander);
+        bool DoesColanderExist(int colanderId);
+        void Add(int id);
         void Delete(WordColander colander);
-
     }
 }

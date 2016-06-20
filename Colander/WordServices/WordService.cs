@@ -33,7 +33,8 @@ namespace Colander.WordServices
             //    word.IsComplicated = true;
             //}
             word.WordColanderID = 1;
-            _wordRepository.AddColander((int)word.WordColanderID);
+            word.Created = DateTime.Now;
+            //_wordRepository.AddColander((int)word.WordColanderID);
             _wordRepository.Add(word);
         }
         public void Edit(Word word)
