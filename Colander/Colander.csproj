@@ -327,6 +327,7 @@
     <Content Include="Views\Words\Index.cshtml" />
     <Content Include="Views\Learn\Learn.cshtml" />
     <Content Include="Views\Learn\LearnWord.cshtml" />
+    <Content Include="Views\Words\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

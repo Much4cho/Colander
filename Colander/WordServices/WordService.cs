@@ -32,8 +32,8 @@ namespace Colander.WordServices
             //{
             //    word.IsComplicated = true;
             //}
-            word.WordColanderID = 1;
-            word.Created = DateTime.Now;
+            word.WordColanderID = 0;
+            word.Created = DateTime.UtcNow;
             //_wordRepository.AddColander((int)word.WordColanderID);
             _wordRepository.Add(word);
         }

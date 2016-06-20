@@ -48,8 +48,8 @@ height:140px;
 </div>
     //<div id="checking"> Your answer: <p><span id='usersAnswer'></span></p><br /></div> //jesli odpowiedz bedzie ok, kolor będzie zielony
     <div>
-        <input id="checking2" type="button" value="I got it right!" class="btn btn-default" onclick="javascript:location.reload(true)" style="float:left; color:green;margin-left:520px" />
-        <input id="checking2" type="button" value="I was wrong!" class="btn btn-default" onclick="javascript:location.reload(true)" style="float:left; color:red;margin-left:60px" />
+        <a class="btn btn-default" href="@Url.Action("Right", new { id = Model.WordID})" style="float:left; color:green;margin-left:520px" >I got it right!</a>
+        <a class="btn btn-default" href="@Url.Action("Wrong", new { id = Model.WordID})" style="float:left; color:red;margin-left:60px" >I was wrong!</a>
     </div>
     <div>
         <br />

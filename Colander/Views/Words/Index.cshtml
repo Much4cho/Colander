@@ -48,7 +48,8 @@
                 </td>
                 <td style="width:380px">
                     @Html.ActionLink("Edit word", "Edit", new { id = item.WordID }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Learn this word", "LearnWord", "Learn", new { id = item.WordID }, new { @class = "btn btn-primary" })
+                    @*@Html.ActionLink("Learn this word", "LearnWord", "Learn", new { id = item.WordID }, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Details", "Details", new { id = item.WordID }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Delete word", "Delete", new { id = item.WordID }, new { @class = "btn btn-primary" })
                 </td>
             </tr>

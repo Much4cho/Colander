@@ -37,7 +37,7 @@ namespace Colander.WordServices
 
         public void Add(int id)
         {
-            var colander = new WordColander(id);
+            var colander = new WordColander() { WordColanderID = id};
             _db.WordColanders.Add(colander);
             _db.SaveChanges();
         }

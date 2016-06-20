@@ -13,9 +13,10 @@ namespace Colander.WordServices
         //{
         //    _colanderRepository = colanderRepository;
         //}
-
         private IWordColanderService _colanderService;
         private IWordService _wordService;
+        private List<Word> currentSession = new List<Word>();
+        private List<Word> gotRightDuringThisSession = new List<Word>();
 
         public ColanderEngine(IWordColanderService colanderService, IWordService wordService)
         {
@@ -23,6 +24,67 @@ namespace Colander.WordServices
             _wordService = wordService;
             _colanderService.CreateColanderLists();
         }
+        public void CreateNowColander(int? id)
+        {
+            TimeSpan colanderFactor;
+            foreach (var word in _wordService.GetForListId(id))
+            {
+                switch (word.WordColanderID)
+                {
+                    case 0:
+                        colanderFactor = TimeSpan.FromDays(1);
+                        break;
+                    case 1:
+                        colanderFactor = TimeSpan.FromDays(2);
+                        break;
+                    case 2:
+                        colanderFactor = TimeSpan.FromDays(3);
+                        break;
+                    case 3:
+                        colanderFactor = TimeSpan.FromDays(5);
+                        break;
+                    case 4:
+                        colanderFactor = TimeSpan.FromDays(8);
+                        break;
+                    case 5:
+                        colanderFactor = TimeSpan.FromDays(13);
+                        break;
+                    case 6:
+                        colanderFactor = TimeSpan.FromDays(21);
+                        break;
+                    case 7:
+                        colanderFactor = TimeSpan.FromDays(34);
+                        break;
+                    case 8:
+                        colanderFactor = TimeSpan.FromDays(55);
+                        break;
+                    case 9:
+                        colanderFactor = TimeSpan.FromDays(89);
+                        break;
+                    default:
+                        colanderFactor = TimeSpan.FromDays(1);
+                        break;
+                }
+                if (word.GuessedRight==null || DateTime.UtcNow - (DateTime)word.GuessedRight > colanderFactor)
+                {
+                    currentSession.Add(word);
+                }
+            }
+        }
+
+        public Word ColanderRandomize(int? id)
+        {
+            Random random = new Random();
+            Word word = null;
+
+            while (currentSession.Any() && word == null)
+            {
+                word = currentSession.ElementAt(random.Next(currentSession.Count()));
+            }
+
+            return word;
+        }
+
         public Word Randomize(int? id)
         {
             Random random = new Random();
@@ -37,7 +99,19 @@ namespace Colander.WordServices
             return word;
         }
 
-        public void Move(Word word, int id)
+        public void AddToGotRightList(Word word)
+        {
+            gotRightDuringThisSession.Add(word);
+        }
+
+        public void MoveUp()
+        {
+            foreach (var item in gotRightDuringThisSession)
+            {
+                item.WordColanderID++;
+            }
+        }
+        public void MoveWord(Word word, int id)
         {
             word.WordColanderID = id;
         }
@@ -47,7 +121,7 @@ namespace Colander.WordServices
             bool outcome;
             if (Original.WordTranslation.ToLower() == Translation.ToLower())
             {
-                Original.GuessedRight = DateTime.Now;
+                Original.GuessedRight = DateTime.UtcNow;
                 outcome = true;
             }
             else
@@ -60,8 +134,12 @@ namespace Colander.WordServices
 
     public interface IColanderEngine
     {
+        void CreateNowColander(int? id);
+        Word ColanderRandomize(int? id);
         Word Randomize(int? id);
-        void Move(Word word, int id);
+        void AddToGotRightList(Word word);
+        void MoveUp();
+        void MoveWord(Word word, int id);
         bool Check(Word Original, string Translation);
     }
 }

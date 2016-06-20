@@ -36,11 +36,6 @@ namespace Colander.WordServices
     {
         public int WordColanderID { get; set; }
         public virtual List<Word> Words { get; set; }
-
-        public WordColander(int id)
-        {
-            WordColanderID = id;
-        }
     }
 
     public class ColanderDBContext : DbContext

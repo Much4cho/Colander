@@ -21,10 +21,12 @@ namespace Colander.Controllers
     public class WordsController : Controller
     {
         private WordServices.IWordService _wordService;
+        private IColanderEngine _colanderEngine;
 
-        public WordsController(IWordService wordService)
+        public WordsController(IWordService wordService, IColanderEngine colanderEngine)
         {
             _wordService = wordService;
+            _colanderEngine = colanderEngine;
         }
 
 
@@ -44,7 +46,15 @@ namespace Colander.Controllers
             return View(wordsView);
         }
 
-
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var word = _wordService.GetForWordId(id);
+            return View(word);
+        }
 
         // GET: Words/Create
         public ActionResult Create(int? id)
@@ -94,7 +104,7 @@ namespace Colander.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID,WordColanderID")] Word word)
+        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID,WordColanderID,Created,GuessedRight")] Word word)
         {
             if (ModelState.IsValid)
             {
