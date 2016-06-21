@@ -58,6 +58,7 @@ namespace Colander.Controllers
                 return HttpNotFound();
             }
             word.GuessedRight = DateTime.UtcNow;
+            _wordService.Edit(word);
             _colanderEngine.AddToGotRightList(word);
             return RedirectToAction("Learn", new { id = word.WordListID });
         }
@@ -73,7 +74,7 @@ namespace Colander.Controllers
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("Learn", word.WordListID);
+            return RedirectToAction("Learn", new { id = word.WordListID });
         }
         //Specified word
         // GET: LearnWord
