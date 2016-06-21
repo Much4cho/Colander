@@ -20,6 +20,10 @@ namespace Colander.WordServices
         {
             return _wordRepository.GetForListId(wordListId);
         }
+        public IEnumerable<Word> GetForGuessedRight(int? wordListId)
+        {
+            return _wordRepository.GetForGuessedRight(wordListId);
+        }
         public Word GetForWordId(int? wordId)
         {
             return _wordRepository.GetForWordId(wordId);
@@ -50,6 +54,7 @@ namespace Colander.WordServices
     public interface IWordService
     {
         IEnumerable<Word> GetForListId(int? wordListId);
+        IEnumerable<Word> GetForGuessedRight(int? wordListId);
         Word GetForWordId(int? wordId);
         void Add(Word word);
         void Edit(Word word);

@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201606200735374_GuessedRightDateNullable.Designer.cs">
       <DependentUpon>201606200735374_GuessedRightDateNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606210912210_GuessedRightDuringThisSession.cs" />
+    <Compile Include="Migrations\201606210912210_GuessedRightDuringThisSession.Designer.cs">
+      <DependentUpon>201606210912210_GuessedRightDuringThisSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -358,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606200735374_GuessedRightDateNullable.resx">
       <DependentUpon>201606200735374_GuessedRightDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606210912210_GuessedRightDuringThisSession.resx">
+      <DependentUpon>201606210912210_GuessedRightDuringThisSession.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

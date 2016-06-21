@@ -21,6 +21,10 @@ namespace Colander.WordServices
             return _db.WordLists.First(list => list.WordListID == wordListId).Words;
             //return _db.WordLists.Find(wordListId).Words;
         }
+        public IEnumerable<Word> GetForGuessedRight(int? wordListId)
+        {
+            return _db.WordLists.First(list => list.WordListID == wordListId).Words.FindAll(word => word.GuessedRightDuringThisSession == true);
+        }
         public Word GetForWordId(int? wordId)
         {
             return _db.Words.Find(wordId);
@@ -58,6 +62,7 @@ namespace Colander.WordServices
     public interface IWordRepository
     {
         IEnumerable<Word> GetForListId(int? wordListId);
+        IEnumerable<Word> GetForGuessedRight(int? wordListId);
         Word GetForWordId(int? wordId);
         void Add(Word word);
         void Edit(Word word);

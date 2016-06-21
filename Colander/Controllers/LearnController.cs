@@ -43,7 +43,8 @@ namespace Colander.Controllers
             if (word == null)
             {
                 //return HttpNotFound();
-                return RedirectToAction("AllLearned", new { id = id });
+                word = _colanderEngine.Randomize(id);
+                //return RedirectToAction("AllLearned", new { id = id });
             }
             return View(word);
         }
@@ -60,6 +61,7 @@ namespace Colander.Controllers
                 return HttpNotFound();
             }
             word.GuessedRight = DateTime.UtcNow;
+            word.GuessedRightDuringThisSession = true;
             _wordService.Edit(word);
             _colanderEngine.AddToGotRightList(word);
             return RedirectToAction("Learn", new { id = word.WordListID });
@@ -83,7 +85,6 @@ namespace Colander.Controllers
 
         public ActionResult LearnWord(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -96,7 +97,19 @@ namespace Colander.Controllers
             }
 
             return View(word);
+        }
 
+        public ActionResult EndSession(int? id)
+        {
+            var words = _wordService.GetForGuessedRight(id);
+            foreach (var word in words)
+            {
+                word.WordColanderID++;
+                word.GuessedRightDuringThisSession = false;
+                _wordService.Edit(word);
+            }
+
+            return RedirectToAction("Index", "Words", new { id = id });
         }
         public ActionResult AllLearned(int? id)
         {
