@@ -1,0 +1,14 @@
+﻿@model Colander.WordServices.WordList
+@{
+    ViewBag.Title = "AllLearned";
+}
+
+<h1 style="margin-left:15em;">All Learned From:</h1>
+<h2 style="margin-left:20em;">@Html.DisplayFor(model => model.WordListName)</h2>
+
+<div>
+    <a class="btn btn-default" href="@Url.Action("Index", "Words", new { id = Model.WordListID})" 
+       style="float:left; color:green;margin-left:520px">Go Back</a>
+    <a class="btn btn-default" href="@Url.Action("Index", "Words", new { id = Model.WordListID})"
+       style="float:left; color:green;margin-left:520px">Go Learn</a>
+</div>

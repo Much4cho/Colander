@@ -43,7 +43,7 @@ namespace Colander.Controllers
             if (word == null)
             {
                 //return HttpNotFound();
-                return RedirectToAction("AllLearnd", new { id = id });
+                return RedirectToAction("AllLearned", new { id = id });
             }
             return View(word);
         }
@@ -98,7 +98,7 @@ namespace Colander.Controllers
             return View(word);
 
         }
-        public ActionResult AllLearnd(int? id)
+        public ActionResult AllLearned(int? id)
         {
             if (id == null)
             {
