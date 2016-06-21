@@ -6,77 +6,65 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Colander.WordService;
+using Colander.WordServices;
 
 namespace Colander.Controllers
 {
     public class WordViewModel
     {
-        public int WordID { get; set; }
-        public string WordOriginal { get; set; }
-        public string WordTranslation { get; set; }
-
-        public int WordListID { get; set; }
+        public IEnumerable<Word> Words { get; set; }
+        public int WordListId { get; set; }
+        public Word ViewWord { get; set; }
     }
+
 
     public class WordsController : Controller
     {
-        private WordListDBContext db = new WordListDBContext();
-        private WordService.WordService wordService = new WordService.WordService();
-        private static int? CurrentListID = null;
+        private WordServices.IWordService _wordService;
+        private IColanderEngine _colanderEngine;
 
-        //public WordsController(IWordService wordService)
-        //{
-        //    wordService = wordService;
-        //}
+        public WordsController(IWordService wordService, IColanderEngine colanderEngine)
+        {
+            _wordService = wordService;
+            _colanderEngine = colanderEngine;
+        }
+
+
 
         // GET: Words
         public ActionResult Index(int? id)
         {
             if (id == null)
             {
-
-                if (CurrentListID == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-                }
-
-                id = CurrentListID;
-
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Word word = db.Words.Find(id);
-            CurrentListID = id;
-            ViewBag.CurrentListID = id;
-            
-            IEnumerable<Word> words = wordService.GetForListId(id);
 
-
+            IEnumerable<Word> words = _wordService.GetForListId(id);
+            var wordsView = new WordViewModel() { Words = words, WordListId = (int)id };
             //var words = db.Words.Include(w => w.WordList);
 
-            return View(words.ToList());
+            return View(wordsView);
         }
 
-        // GET: Words/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Word word = db.Words.Find(id);
-            if (word == null)
-            {
-                return HttpNotFound();
-            }
+            var word = _wordService.GetForWordId(id);
             return View(word);
         }
 
         // GET: Words/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID");
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var word = new Word() { WordListID = (int)id };
+            return View(word);
         }
 
         // POST: Words/Create
@@ -88,14 +76,13 @@ namespace Colander.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Words.Add(word);
-                db.SaveChanges();
-                return RedirectToAction("Index", new { id = CurrentListID });
+                _wordService.Add(word);
+                return RedirectToAction("Index", new { id = word.WordListID });
             }
-
-            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
+
+
 
         // GET: Words/Edit/5
         public ActionResult Edit(int? id)
@@ -104,12 +91,11 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Word word = db.Words.Find(id);
+            Word word = _wordService.GetForWordId(id);
             if (word == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
 
@@ -118,17 +104,17 @@ namespace Colander.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID")] Word word)
+        public ActionResult Edit([Bind(Include = "WordID,WordOriginal,WordTranslation,WordListID,WordColanderID,Created,GuessedRight")] Word word)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(word).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                _wordService.Edit(word);
+                return RedirectToAction("Index", new { id = word.WordListID });
             }
-            ViewBag.WordListID = new SelectList(db.WordLists, "WordListID", "WordListID", word.WordListID);
             return View(word);
         }
+
+
 
         // GET: Words/Delete/5
         public ActionResult Delete(int? id)
@@ -137,7 +123,7 @@ namespace Colander.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Word word = db.Words.Find(id);
+            Word word = _wordService.GetForWordId(id);
             if (word == null)
             {
                 return HttpNotFound();
@@ -150,18 +136,20 @@ namespace Colander.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Word word = db.Words.Find(id);
-            db.Words.Remove(word);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Word word = _wordService.GetForWordId(id);
+            _wordService.Delete(word);
+
+            return RedirectToAction("Index", new { id = word.WordListID });
         }
+
 
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                //_wordService.Dispose();
+
             }
             base.Dispose(disposing);
         }

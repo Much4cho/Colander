@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Builder;
+using Autofac.Integration.Mvc;
+using Colander.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,10 +17,13 @@ namespace Colander
     {
         protected void Application_Start()
         {
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ContainerConfig.RegisterContainer();
         }
     }
 }

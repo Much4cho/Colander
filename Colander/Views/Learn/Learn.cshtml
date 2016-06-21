@@ -1,4 +1,4 @@
-﻿@model Colander.WordService.Word
+﻿@model Colander.WordServices.Word
 @{
     ViewBag.Title = "Learn";
 }
@@ -40,12 +40,13 @@
     </div>
    
     <div>
-        <input id="checking" type="button" value="I got it right!" class="btn btn-default" onclick="javascript:location.reload(true)" style="float:left; color:green;margin-left:520px" />
-        <input id="checking" type="button" value="I was wrong!" class="btn btn-default" onclick="javascript:location.reload(true)" style="float:left; color:red;margin-left:60px" />
+        <a class="btn btn-default" href="@Url.Action("Right", new { id = Model.WordID})" style="float:left; color:green;margin-left:520px" >I got it right!</a>
+        <a class="btn btn-default" href="@Url.Action("Wrong", new { id = Model.WordID})" style="float:left; color:red;margin-left:60px" >I was wrong!</a>
     </div>
-    
-    <div>
-        <br /><br />
-        @Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID }, null)
+    <div id="NotCheck">
+        <br />
+        <br />
+        @*@Html.ActionLink("Back to List", "Index", "Words", new { id = Model.WordListID }, null)*@
+        @Html.ActionLink("Back to List", "EndSession", new { id = Model.WordListID })
     </div>
 } 

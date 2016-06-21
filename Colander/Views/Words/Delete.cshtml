@@ -1,4 +1,4 @@
-﻿@model Colander.WordService.Word
+﻿@model Colander.WordServices.Word
 
 @{
     ViewBag.Title = "Delete";
@@ -41,7 +41,7 @@
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" style="margin-left:610px" />
             <br />
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", new { id = Model.WordListID })
         </div>
     }
 </div>

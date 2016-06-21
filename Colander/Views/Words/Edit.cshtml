@@ -1,4 +1,4 @@
-﻿@model Colander.WordService.Word
+﻿@model Colander.WordServices.Word
 
 @{
     ViewBag.Title = "Edit";
@@ -31,13 +31,17 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.WordListID, "WordListID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("WordListID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.WordListID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
+        @Html.HiddenFor(model => model.WordListID)
+        @Html.HiddenFor(model => model.WordColanderID)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.GuessedRight)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -48,7 +52,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { id = Model.WordListID })
 </div>
 
 @section Scripts {

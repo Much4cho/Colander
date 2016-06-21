@@ -1,18 +1,20 @@
-﻿@model IEnumerable<Colander.WordService.Word>
+﻿@model Colander.Controllers.WordViewModel
 
 @{
     ViewBag.Title = "Index";
     //var currentID = Model.FirstOrDefault().WordListID;
 }
-</form>
+
 <div style="margin-left:220px">
     <h2 style="display:inline">Words in this list:</h2>
 
     <p style="float:right; margin-right:3px">
-        @Html.ActionLink("Add new word", "Create", new { id = ViewBag.CurrentListID }, new { @class = "btn btn-primary" })    @*currentID*@
+        @Html.ActionLink("Add new word", "Create", 
+       new { id = Model.WordListId }, new { @class = "btn btn-primary" })    @*currentID*@
     </p>
-    <p style="float:right; margin-right:3px">
-        @Html.ActionLink("Start Learning", "Learn", "Learn", new { id = ViewBag.CurrentListID }, new { @class = "btn btn-primary" })
+    <p style="float:right;margin-right:3px">
+        @Html.ActionLink("Start Learning", "Learn", "Learn", 
+       new { id = Model.WordListId }, new { @class = "btn btn-primary" })
     </p>
     <table class="table" style="width:1000px">
         <tr style="background-color:darkgray; color:black;">
@@ -20,16 +22,17 @@
                     @Html.DisplayNameFor(model => model.WordList.WordListID)
                 </th>*@
             <th style="width:300px">
-                @Html.DisplayNameFor(model => model.WordOriginal)
+                Orginal name
             </th>
             <th style="width:300px">
-                @Html.DisplayNameFor(model => model.WordTranslation)
+                Translation
             </th>
-            <th>
-                Actions
+            <th style="width:100px">
+                Colander ID
             </th>
+            <th></th>
         </tr>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Words)
         {
             <tr>
                 @*<td>
@@ -41,9 +44,13 @@
                 <td style="width:310px; font-size:16px; font-family:'Lucida Sans'">
                     @Html.DisplayFor(modelItem => item.WordTranslation)
                 </td>
+                <td style="width:100px">
+                    @Html.DisplayFor(modelItem => item.WordColanderID)
+                </td>
                 <td style="width:380px">
                     @Html.ActionLink("Edit word", "Edit", new { id = item.WordID }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Learn this word", "LearnWord", "Learn", new { id = item.WordID }, new { @class = "btn btn-primary" })
+                    @*@Html.ActionLink("Learn this word", "LearnWord", "Learn", new { id = item.WordID }, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Details", "Details", new { id = item.WordID }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Delete word", "Delete", new { id = item.WordID }, new { @class = "btn btn-primary" })
                 </td>
             </tr>

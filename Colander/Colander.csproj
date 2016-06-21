@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -191,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -211,6 +220,26 @@
     <Compile Include="Migrations\201606130725052_noi.Designer.cs">
       <DependentUpon>201606130725052_noi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606161139575_WordColander.cs" />
+    <Compile Include="Migrations\201606161139575_WordColander.Designer.cs">
+      <DependentUpon>201606161139575_WordColander.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606170624395_nullableColanderID.cs" />
+    <Compile Include="Migrations\201606170624395_nullableColanderID.Designer.cs">
+      <DependentUpon>201606170624395_nullableColanderID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606200723090_DatesAdded.cs" />
+    <Compile Include="Migrations\201606200723090_DatesAdded.Designer.cs">
+      <DependentUpon>201606200723090_DatesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606200735374_GuessedRightDateNullable.cs" />
+    <Compile Include="Migrations\201606200735374_GuessedRightDateNullable.Designer.cs">
+      <DependentUpon>201606200735374_GuessedRightDateNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606210912210_GuessedRightDuringThisSession.cs" />
+    <Compile Include="Migrations\201606210912210_GuessedRightDuringThisSession.Designer.cs">
+      <DependentUpon>201606210912210_GuessedRightDuringThisSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -218,8 +247,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\WordListsController.cs" />
-    <Compile Include="WordService\WordListService.cs" />
-    <Compile Include="WordService\WordsModel.cs" />
+    <Compile Include="WordServices\ColanderEngine.cs" />
+    <Compile Include="WordServices\WordColanderRepository.cs" />
+    <Compile Include="WordServices\WordColanderService.cs" />
+    <Compile Include="WordServices\WordListRepository.cs" />
+    <Compile Include="WordServices\WordRepository.cs" />
+    <Compile Include="WordServices\WordListService.cs" />
+    <Compile Include="WordServices\WordService.cs" />
+    <Compile Include="WordServices\WordsModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Colander.WordService.WordListDBContext.mdf" />
@@ -288,20 +323,18 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\WordLists\Create.cshtml" />
     <Content Include="Views\WordLists\Delete.cshtml" />
-    <Content Include="Views\WordLists\Details.cshtml" />
     <Content Include="Views\WordLists\Edit.cshtml" />
     <Content Include="Views\WordLists\Index.cshtml" />
     <Content Include="Views\Words\Create.cshtml" />
     <Content Include="Views\Words\Delete.cshtml" />
-    <Content Include="Views\Words\Details.cshtml" />
     <Content Include="Views\Words\Edit.cshtml" />
     <Content Include="Views\Words\Index.cshtml" />
     <Content Include="Views\Learn\Learn.cshtml" />
     <Content Include="Views\Learn\LearnWord.cshtml" />
+    <Content Include="Views\Words\Details.cshtml" />
+    <Content Include="Views\Learn\AllLearned.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\WordLearning\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -317,6 +350,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606130725052_noi.resx">
       <DependentUpon>201606130725052_noi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606161139575_WordColander.resx">
+      <DependentUpon>201606161139575_WordColander.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606170624395_nullableColanderID.resx">
+      <DependentUpon>201606170624395_nullableColanderID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606200723090_DatesAdded.resx">
+      <DependentUpon>201606200723090_DatesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606200735374_GuessedRightDateNullable.resx">
+      <DependentUpon>201606200735374_GuessedRightDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606210912210_GuessedRightDuringThisSession.resx">
+      <DependentUpon>201606210912210_GuessedRightDuringThisSession.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
