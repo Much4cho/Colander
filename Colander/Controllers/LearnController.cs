@@ -12,11 +12,12 @@ namespace Colander.Controllers
     {
         private IWordService _wordService;
         private IColanderEngine _colanderEngine;
-        public string usersAnswer;
+        private IWordListService _wordListService;
 
-        public LearnController(IWordService wordService, IColanderEngine colanderEngine)
+        public LearnController(IWordService wordService, IWordListService wordListService, IColanderEngine colanderEngine)
         {
             _wordService = wordService;
+            _wordListService = wordListService;
             _colanderEngine = colanderEngine;
         }
 
@@ -41,7 +42,8 @@ namespace Colander.Controllers
 
             if (word == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("AllLearnd", new { id = id });
             }
             return View(word);
         }
@@ -95,6 +97,15 @@ namespace Colander.Controllers
 
             return View(word);
 
+        }
+        public ActionResult AllLearnd(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            WordList hihi = _wordListService.GetById((int)id);
+            return View(hihi);
         }
     }
 }

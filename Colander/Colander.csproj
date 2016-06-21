@@ -328,6 +328,7 @@
     <Content Include="Views\Learn\Learn.cshtml" />
     <Content Include="Views\Learn\LearnWord.cshtml" />
     <Content Include="Views\Words\Details.cshtml" />
+    <Content Include="Views\Learn\AllLearnd.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
