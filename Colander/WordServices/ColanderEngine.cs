@@ -31,34 +31,34 @@ namespace Colander.WordServices
             {
                 switch (word.WordColanderID)
                 {
-                    case 0:
+                    case 1:
                         colanderFactor = TimeSpan.FromDays(1);
                         break;
-                    case 1:
+                    case 2:
                         colanderFactor = TimeSpan.FromDays(2);
                         break;
-                    case 2:
+                    case 3:
                         colanderFactor = TimeSpan.FromDays(3);
                         break;
-                    case 3:
+                    case 4:
                         colanderFactor = TimeSpan.FromDays(5);
                         break;
-                    case 4:
+                    case 5:
                         colanderFactor = TimeSpan.FromDays(8);
                         break;
-                    case 5:
+                    case 6:
                         colanderFactor = TimeSpan.FromDays(13);
                         break;
-                    case 6:
+                    case 7:
                         colanderFactor = TimeSpan.FromDays(21);
                         break;
-                    case 7:
+                    case 8:
                         colanderFactor = TimeSpan.FromDays(34);
                         break;
-                    case 8:
+                    case 9:
                         colanderFactor = TimeSpan.FromDays(55);
                         break;
-                    case 9:
+                    case 10:
                         colanderFactor = TimeSpan.FromDays(89);
                         break;
                     default:

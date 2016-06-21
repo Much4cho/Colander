@@ -15,7 +15,7 @@ namespace Colander.WordServices
 
         public void CreateColanderLists()
         {
-                for (int i = 0; i < 10; i++)
+                for (int i = 1; i < 11; i++)
                 {
                     if (!_colanderRepository.DoesColanderExist(i))
                     {

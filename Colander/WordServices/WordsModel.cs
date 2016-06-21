@@ -29,6 +29,7 @@ namespace Colander.WordServices
 
         public int? WordColanderID { get; set; }
         public virtual WordColander WordColander { get; set; }
+
         public DateTime Created { get; set; }
         public DateTime? GuessedRight { get; set; }
         public bool GuessedRightDuringThisSession { get; set; }
