@@ -8,3 +8,5 @@ Kod: modele i klasy zawierające logike znajdują się w folderze WordService, a
 
 Aplikacja ciągle ewoluuje. Mamy nadzieję, że spełnia wymagania projektu, jeśli byłoby za mało, 
 proszę sprawdzić najnowszego (niektore commity moga nie dzialac, staram sie je tagowac #nieDziala) commita z brancha fixing spaghetti.
+
+Projekt stworzony na potrzeby Akademii C# organizowanej przez Grupę .NET PG.
