@@ -36,17 +36,6 @@ summary {
     display: block;
 }
 
-.flashcard {
-    width: 320px;
-    height: 140px;
-    padding: 10px;
-    border: 1px solid gray;
-    text-align: center;
-    margin-left: 490px;
-    margin-bottom: 5px;
-    background-color: lavenderblush;
-}
-
 audio,
 canvas,
 video {

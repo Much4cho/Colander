@@ -3,12 +3,12 @@
     ViewBag.Title = "Learn";
 }
 
-<h2 style="font-family:'Copperplate Gothic'; margin-left:540px; margin-top:0px">learning mode</h2>
+<h2 style="font-family:'Copperplate Gothic'; margin-top:0px">learning mode</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div style="margin-left:490px;">Word:</div>
+    <div>Word:</div>
     
     <div class="div flashcard">
         <h4 style="margin-top:40px; 
@@ -17,8 +17,8 @@
             font-weight:bold;">@Html.DisplayFor(model => model.WordOriginal)</h4>
     </div>
 
-    <div style="margin-left:595px">
-        <input type="button" value="Show answer" onclick="showhide()" class="btn btn-default" /><br />
+    <div>
+        <input id="show-answer-btn" type="button" value="Show answer" onclick="showhide()" class="btn btn-default" /><br />
     </div>
    
      <div id="checking" style="display:none" />
@@ -27,21 +27,24 @@
             function showhide() {
                 var div = document.getElementById("checking");
                 div.style.display = "block";
+
+                var btn = document.getElementById("show-answer-btn");
+                btn.style.display = "none";
             }
         </script>
 
-    <div id="checking" style="margin-left:490px;">Correct answer: </div>
+    <div id="checking">Correct answer: </div>
     <div id="checking" class="div flashcard">
         <p style="font-family:Arial; 
                   font-weight:bold; 
                   font-size:30px; 
                   color:green;
-                  margin-top:33px">@Html.DisplayFor(model => model.WordTranslation)</p>
+                  margin-top:15px">@Html.DisplayFor(model => model.WordTranslation)</p>
     </div>
    
     <div>
-        <a class="btn btn-default" href="@Url.Action("Right", new { id = Model.WordID})" style="float:left; color:green;margin-left:520px" >I got it right!</a>
-        <a class="btn btn-default" href="@Url.Action("Wrong", new { id = Model.WordID})" style="float:left; color:red;margin-left:60px" >I was wrong!</a>
+        <a class="btn btn-default" href="@Url.Action("Right", new { id = Model.WordID})" style="color:green;margin-right:150px" >I got it right!</a>
+        <a class="btn btn-default" href="@Url.Action("Wrong", new { id = Model.WordID})" style="color:red;margin-left:150px" >I was wrong!</a>
     </div>
     <div id="NotCheck">
         <br />

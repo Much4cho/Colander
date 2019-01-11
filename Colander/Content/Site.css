@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.page-title {
+    text-align: center;
+}
+
+.flashcard {
+    min-width: 320px;
+    max-width: 860px;
+    height: 140px;
+    padding: 10px;
+    border: 1px solid gray;
+    text-align: center;
+    margin:0 auto 5px auto;
+    background-color: lavenderblush;
+}

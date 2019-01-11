@@ -10,13 +10,13 @@
 {
     @Html.AntiForgeryToken()
     <div style="margin-left:490px;">Word:</div>
-    <div class="div flashcard">
+    <div class="flashcard">
         <h4 style="margin-top:40px; 
                    font-family:Arial; 
                    font-size:30px; 
                    font-weight:bold;">@Html.DisplayFor(model => model.WordOriginal)</h4>
     </div>
-    <div style="margin-left:595px">
+    <div>
         <input type="button" value="Show answer" onclick="showhide()" class="btn btn-default" /><br />
     </div>
 
@@ -29,7 +29,7 @@
         </script>
 
     <div id="checking" style="margin-left:490px;"> Correct answer: </div>
-    <div id="checking" class="div flashcard">
+    <div id="checking" class="flashcard">
     <p style="font-family:Arial; 
               font-weight:bold; 
               font-size:30px; 
